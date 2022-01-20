@@ -1,0 +1,82 @@
+<!OCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <title>Document</title>
+    <style>
+      body {
+        background: #c9c0c9;
+      }
+    </style>
+    <script>
+      var data_endpoint = "/get_data";
+      var label = [];
+      var default_data = [];
+      $.ajax({
+        method: "GET",
+        url: data_endpoint,
+        success: function (data) {
+          default_data = data;
+          console.log(data);
+          makeChart();
+        },
+        error: function (error_data) {
+          console.log(error);
+          console.log(error_data);
+        },
+      });
+      function makeChart() {
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const myChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: label,
+            datasets: [
+              {
+                label: "# of Votes",
+                data: default_data,
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div
+      class="contaoner"
+      style="max-height: 400px; max-width: 400px; background-color: #fff"
+    >
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="container">
+      <canvas id="myChart2" width="400" height="400"></canvas>
+    </div>
+  </body>
+</html>
+D
