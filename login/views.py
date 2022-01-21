@@ -47,5 +47,3 @@ def signin_ups(request):
     return render(request,'signin_up.html')
 
 
-def chekout(request):
-    return render(request,'checkout.html')
