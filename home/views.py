@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishlist
+from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishlist,WishlistItem
 from django.http import JsonResponse
 
 import json
@@ -139,12 +139,10 @@ def favorite(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Wishlist.objects.get_or_create(customer=customer)
-        items =  order.witchlistitem_set.all()
+        items =  order.wishlistitem_set.all()
     else:
         items = []
     ctx = {"items": items}
-    print(items)
-    # ctx = {}
     return render(request, 'favorite.html', ctx)
 
 def updateFav(request):
@@ -159,18 +157,18 @@ def updateFav(request):
     product = Product.objects.get(pid=productId)
 
     favorite,created = Wishlist.objects.get_or_create(customer=customer)
-    favoriteItem,created = Wishlist.objects.get_or_create(product=product,Witchlist=favorite)
+    favoriteItem,created = WishlistItem.objects.get_or_create(product=product,wishlists=favorite)
 
-    if action == "add":
-        favorite.quantity += 1
-        favorite.save()
-    elif action == "remove":
-        favorite.quantity -= 1
-        favorite.save()
-    elif action == "delete":
-        favorite.delete()
+    # if action == "add":
+        # favorite.quantity += 1
+        # favorite.save()
+    # elif action == "remove":
+        # favorite.quantity -= 1
+        # favorite.save()
+    # elif action == "delete":
+        # favorite.delete()
 
-    if favorite.quantity <= 0:
-        favorite.delete()
+    # if favorite.quantity <= 0:
+        # favorite.delete()
 
     return JsonResponse("item was added", safe=False)

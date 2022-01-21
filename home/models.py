@@ -75,4 +75,4 @@ class Wishlist(models.Model):
 
 class WishlistItem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
-    witchlists = models.ForeignKey(Wishlist,on_delete=models.CASCADE,null=True)
+    wishlists = models.ForeignKey(Wishlist,on_delete=models.CASCADE,null=True)
