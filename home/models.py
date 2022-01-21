@@ -67,10 +67,12 @@ class ShippingAddress(models.Model):
     def __str__(self) -> str:
         return f"{self.address}"
 
-class Witchlist(models.Model):
+# wishlist
+class Wishlist(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
-    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True)
-    quantity = models.IntegerField(default=0,null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+
+class WishlistItem(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    wishlists = models.ForeignKey(Wishlist,on_delete=models.CASCADE,null=True)

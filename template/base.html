@@ -40,7 +40,7 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="/favorite"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="/cart"><i class="fa fa-shopping-bag"></i> <span>{{ chartItem }}</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>{{ orderItem.get_cart_totle }}</span></div>
@@ -157,7 +157,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="/favorite"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="/cart"><i class="fa fa-shopping-bag"></i> <span>{{ cartItem }}</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>{{ order.get_cart_totle }}</span></div>
@@ -237,7 +237,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>

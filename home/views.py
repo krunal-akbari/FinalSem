@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from .models import Customer, OrderItem, Product, Order, ShippingAddress
+from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishlist,WishlistItem
 from django.http import JsonResponse
 
 import json
@@ -20,8 +20,8 @@ def home(request):
         items = []
         order = {'get_cart_totle': 0, 'get_cart_items': 0}
         chartItem = order['get_cart_items']
-    ctx = {"p":Product.objects.all(),"cartItem":chartItem,"order":order}
-    return render(request, 'home.html',ctx)
+    ctx = {"p": Product.objects.all(), "cartItem": chartItem, "order": order}
+    return render(request, 'home.html', ctx)
 
 
 def chart(request):
@@ -114,8 +114,9 @@ def checkout(request):
         items = []
         order = {'get_cart_totle': 0, 'get_cart_items': 0}
         cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order,"cartItem":cartItem}
+    ctx = {'items': items, "order": order, "cartItem": cartItem}
     return render(request, 'checkout.html', ctx)
+
 
 def contactus(request):
     if request.user.is_authenticated:
@@ -129,6 +130,45 @@ def contactus(request):
         items = []
         order = {'get_cart_totle': 0, 'get_cart_items': 0}
         cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order,"cartItem":cartItem}
+    ctx = {'items': items, "order": order, "cartItem": cartItem}
 
-    return render(request,'contectus.html',ctx)
+    return render(request, 'contectus.html', ctx)
+
+
+def favorite(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Wishlist.objects.get_or_create(customer=customer)
+        items =  order.wishlistitem_set.all()
+    else:
+        items = []
+    ctx = {"items": items}
+    return render(request, 'favorite.html', ctx)
+
+def updateFav(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print(f'Action {action} , productId {productId}')
+
+    # print("the problem arive from below")
+
+    customer = request.user.customer
+    product = Product.objects.get(pid=productId)
+
+    favorite,created = Wishlist.objects.get_or_create(customer=customer)
+    favoriteItem,created = WishlistItem.objects.get_or_create(product=product,wishlists=favorite)
+
+    # if action == "add":
+        # favorite.quantity += 1
+        # favorite.save()
+    # elif action == "remove":
+        # favorite.quantity -= 1
+        # favorite.save()
+    # elif action == "delete":
+        # favorite.delete()
+
+    # if favorite.quantity <= 0:
+        # favorite.delete()
+
+    return JsonResponse("item was added", safe=False)
