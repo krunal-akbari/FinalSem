@@ -19,7 +19,7 @@ class Product(models.Model):
     image = models.CharField(max_length=200)
 
     def __str__(self) -> str:
-        return self.tname
+        return f"{self.tname} \t {self.pid}"
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
@@ -75,4 +75,4 @@ class Wishlist(models.Model):
 
 class WishlistItem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
-    wishlists = models.ForeignKey(Wishlist,on_delete=models.CASCADE,null=True)
+    wishlists = models.ForeignKey(Wishlist,on_delete=models.SET_NULL,null=True)
