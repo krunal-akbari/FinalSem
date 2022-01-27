@@ -172,3 +172,6 @@ def updateFav(request):
         # favorite.delete()
 
     return JsonResponse("item was added", safe=False)
+
+def profile(request):
+    return render(request, 'profile.html')

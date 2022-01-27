@@ -12,4 +12,5 @@ urlpatterns = [
     path('checkout',views.checkout),
     path('contactus',views.contactus),
     path('favorite',views.favorite),
+    path('profile',views.profile),
 ]

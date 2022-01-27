@@ -1,20 +1,20 @@
 /******************************************************************
-  Template Name: Ogani
-  Description:  Ogani eCommerce  HTML Template
-  Author: Colorlib
-  Author URI: https://colorlib.com
-  Version: 1.0
-  Created: Colorlib
-******************************************************************/
+Template Name: Ogani
+Description:  Ogani eCommerce  HTML Template
+Author: Colorlib
+Author URI: https://colorlib.com
+Version: 1.0
+Created: Colorlib
+ ******************************************************************/
 
 /*------------------------------------------------------------------
 [Table of contents]
 
 1.  Template default CSS
-	1.1	Variables
-	1.2	Mixins
-	1.3	Flexbox
-	1.4	Reset
+1.1	Variables
+1.2	Mixins
+1.3	Flexbox
+1.4	Reset
 2.  Helper Css
 3.  Header Section
 4.  Hero Section
@@ -108,7 +108,7 @@ ol {
 }
 
 /*---------------------
-  Helper CSS
+Helper CSS
 -----------------------*/
 
 .section-title {
@@ -247,7 +247,7 @@ ol {
 }
 
 /*---------------------
-  Header
+Header
 -----------------------*/
 
 .header__top {
@@ -557,7 +557,7 @@ ol {
 }
 
 /*---------------------
-  Hero
+Hero
 -----------------------*/
 
 .hero {
@@ -754,7 +754,7 @@ ol {
 }
 
 /*---------------------
-  Categories
+Categories
 -----------------------*/
 
 .categories__item {
@@ -797,7 +797,7 @@ ol {
 	position: absolute;
 	left: -35px;
 	top: 50%;
-	-webkit-transform: translateY(-35px);
+	--webkit-transform: translateY(-35px);
 	background: #ffffff;
 }
 
@@ -807,7 +807,7 @@ ol {
 }
 
 /*---------------------
-  Featured
+Featured
 -----------------------*/
 
 .featured {
@@ -944,7 +944,7 @@ ol {
 }
 
 /*---------------------
-  Latest Product
+Latest Product
 -----------------------*/
 
 .latest-product {
@@ -1018,7 +1018,7 @@ ol {
 }
 
 /*---------------------
-  Form BLog
+Form BLog
 -----------------------*/
 
 .from-blog {
@@ -1035,7 +1035,7 @@ ol {
 }
 
 /*---------------------
-  Breadcrumb
+Breadcrumb
 -----------------------*/
 
 .breadcrumb-section {
@@ -1076,7 +1076,7 @@ ol {
 }
 
 /*---------------------
-  Sidebar
+Sidebar
 -----------------------*/
 
 .sidebar__item {
@@ -1250,7 +1250,7 @@ ol {
 }
 
 /*---------------------
-  Shop Grid
+Shop Grid
 -----------------------*/
 
 .product {
@@ -1656,7 +1656,7 @@ ol {
 }
 
 /*---------------------
-  Shop Details
+Shop Details
 -----------------------*/
 
 .product-details {
@@ -1861,7 +1861,7 @@ ol {
 }
 
 /*---------------------
-  Shop Details
+Shop Details
 -----------------------*/
 
 .related-product {
@@ -1873,7 +1873,7 @@ ol {
 }
 
 /*---------------------
-  Shop Cart
+Shop Cart
 -----------------------*/
 
 .shoping-cart {
@@ -2065,7 +2065,7 @@ ol {
 }
 
 /*---------------------
-  Checkout
+Checkout
 -----------------------*/
 
 .checkout {
@@ -2270,7 +2270,7 @@ ol {
 }
 
 /*---------------------
-  Blog
+Blog
 -----------------------*/
 
 .blog__item {
@@ -2349,7 +2349,7 @@ ol {
 }
 
 /*---------------------
-  Blog Sidebar
+Blog Sidebar
 -----------------------*/
 
 .blog__sidebar {
@@ -2465,7 +2465,7 @@ ol {
 }
 
 /*---------------------
-  Blog Details Hero
+Blog Details Hero
 -----------------------*/
 
 .blog-details-hero {
@@ -2510,7 +2510,7 @@ ol {
 }
 
 /*---------------------
-  Blog Details
+Blog Details
 -----------------------*/
 
 .related-blog {
@@ -2610,7 +2610,7 @@ ol {
 }
 
 /*---------------------
-  Footer
+Footer
 -----------------------*/
 
 .footer {
@@ -2744,7 +2744,7 @@ ol {
 }
 
 /*---------------------
-  Contact
+Contact
 -----------------------*/
 
 .contact {
@@ -2774,7 +2774,7 @@ ol {
 }
 
 /*---------------------
-  Map
+Map
 -----------------------*/
 
 .map {
@@ -2845,7 +2845,7 @@ ol {
 }
 
 /*---------------------
-  Contact Form
+Contact Form
 -----------------------*/
 
 .contact__form__title {
@@ -3466,3 +3466,79 @@ ol {
 		font-size: 24px;
 	}
 }
+
+/* service things */
+.service-icon {
+	border: 3px solid transparent;
+	display: inline-block;
+	height: 85px;
+	width: 85px;
+	line-height: 101px;
+
+	-webkit-transform: rotate(47deg);
+	-moz-transform: rotate(47deg);
+	-ms-transform: rotate(47deg);
+	-o-transform: rotate(47deg);
+	transform: rotate(47deg);
+
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-ms-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+.service-item:hover .service-icon {
+	border: 3px solid #009ee3;
+	margin-bottom: 20px;
+	color: #009ee3;
+}
+
+.service-icon i {
+	-webkit-transform: rotate(-48deg);
+	-moz-transform: rotate(-48deg);
+	-ms-transform: rotate(-48deg);
+	-o-transform: rotate(-48deg);
+	transform: rotate(-48deg);
+}
+
+.service-item h3 {
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+
+.sec-title {
+    margin-bottom: 50px;
+}
+
+.sec-title.white {
+    color: #fff;
+}
+
+.sec-title h2 {
+    font-size: 36px;
+    margin: 0 0 30px;
+    padding-bottom: 30px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.sec-title.white h2 {
+    color: #fff;
+}
+
+.sec-title h2:after {
+    border-bottom: 1px solid #009ee3;
+    content: "";
+    display: block;
+    left: 45%;
+    bottom: 0;
+    position: absolute;
+    width: 115px;
+}
+
+.sec-title.white h2:after {
+    border-bottom: 1px solid #fff;
+}
+
