@@ -5,7 +5,12 @@ class Customer(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,null=True, blank=False)
     name = models.CharField(max_length=100,null=True)
     email = models.CharField(max_length=100,null=True)
-    
+    phoneno = models.CharField(max_length=10,null=True)
+    address = models.CharField(max_length=100,null=True)
+    image = models.ImageField(max_length=100,null=True)
+    state = models.CharField(max_length=100,null=True)
+
+
     def __str__(self) -> str:
         return self.name
 

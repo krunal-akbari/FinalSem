@@ -52,7 +52,8 @@
               <div
                 class="card-body profile-card pt-4 d-flex flex-column align-items-center"
               >
-                <img src=" " alt="Profile" class="rounded-circle" />
+              <object data="{{ c.image }}" type="image/png">
+              <img src="{% static 'img/profile/default.jpg' %}" alt="default img" class="rounded-circle" /> </object>
                 <h2>{{ c.name }}</h2>
                 <div class="social-links mt-2">
                   <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -130,17 +131,17 @@
 
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">State</div>
-                      <div class="col-lg-9 col-md-8">India</div>
+                      <div class="col-lg-9 col-md-8">{{ c.state }}</div>
                     </div>
 
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Address</div>
-                      <div class="col-lg-9 col-md-8">some address</div>
+                      <div class="col-lg-9 col-md-8">{{ c.address }}</div>
                     </div>
 
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Phone</div>
-                      <div class="col-lg-9 col-md-8">1111111111111</div>
+                      <div class="col-lg-9 col-md-8">{{ c.phoneno }}</div>
                     </div>
 
                     <div class="row">
@@ -164,7 +165,9 @@
                           >Profile Image</label
                         >
                         <div class="col-md-8 col-lg-9">
-                          <img src=" " alt="Profile" />
+                            <object data="{% static 'img/profile/' %}{{ c.image }}" type="image/png">
+                            <img src="{% static 'img/profile/default.jpg' %}" alt="Profile" />
+                            </object>
                           <div class="pt-2">
                             <a
                               href="#"
@@ -212,7 +215,7 @@
                             type="text"
                             class="form-control"
                             id="Country"
-                            value="India"
+                            value="{{ c.state }}"
                           />
                         </div>
                       </div>
@@ -229,7 +232,7 @@
                             type="text"
                             class="form-control"
                             id="Address"
-                            value="some add"
+                            value="{{ c.address }}"
                           />
                         </div>
                       </div>
@@ -246,7 +249,7 @@
                             type="text"
                             class="form-control"
                             id="Phone"
-                            value="1111111111"
+                            value="{{ c.phoneno }}"
                           />
                         </div>
                       </div>
