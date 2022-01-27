@@ -13,4 +13,5 @@ urlpatterns = [
     path('contactus',views.contactus),
     path('favorite',views.favorite),
     path('profile',views.profile),
+    path('about',views.about),
 ]

@@ -159,19 +159,16 @@ def updateFav(request):
     favorite,created = Wishlist.objects.get_or_create(customer=customer)
     favoriteItem,created = WishlistItem.objects.get_or_create(product=product,wishlists=favorite)
 
-    # if action == "add":
-        # favorite.quantity += 1
-        # favorite.save()
-    # elif action == "remove":
-        # favorite.quantity -= 1
-        # favorite.save()
-    # elif action == "delete":
-        # favorite.delete()
-
-    # if favorite.quantity <= 0:
-        # favorite.delete()
 
     return JsonResponse("item was added", safe=False)
 
 def profile(request):
-    return render(request, 'profile.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+    else:
+        customer = []
+    ctx = {"c":customer}
+
+    return render(request, 'profile.html',ctx)
+def about(request):
+    return render(request, 'aboutus.html')
