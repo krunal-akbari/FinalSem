@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="zxx">
 
     <head>
@@ -27,6 +27,8 @@
     </head>
 
     <body>
+        
+
         <!-- Page Preloder -->
         <div id="preloder">
             <div class="loader"></div>
@@ -62,7 +64,7 @@
             <nav class="humberger__menu__nav mobile-menu">
                 <ul>
                     <li class="active"><a href="/">Home</a></li>
-                    <li><a href="#">Pages</a>
+                    <li><a>Pages</a>
                         <ul class="header__menu__dropdown">
                             <li><a href="/cart">Shoping Cart</a></li>
                             <li><a href="/checkout">Check Out</a></li>
@@ -137,7 +139,7 @@
                         <nav class="header__menu">
                             <ul>
                                 <li class="active"><a href="/">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a>Pages</a>
                                     <ul class="header__menu__dropdown">
                                         <li><a href="/cart">Shoping Cart</a></li>
                                         <li><a href="/checkout">Check Out</a></li>
@@ -353,7 +355,7 @@
         <script src="{% static 'js/owl.carousel.min.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
         <script src="{% static 'js/myjs.js' %}"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>
             var user = "{{ request.user }}";
 

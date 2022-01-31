@@ -7,7 +7,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=100,null=True)
     phoneno = models.CharField(max_length=10,null=True)
     address = models.CharField(max_length=100,null=True)
-    image = models.ImageField(max_length=100,null=True)
+    image = models.ImageField(upload_to='static/img/profile')
     state = models.CharField(max_length=100,null=True)
 
 
@@ -21,15 +21,25 @@ class Product(models.Model):
     digital = models.BooleanField(default=False,null=True,blank=True)
     cat = models.CharField(max_length=200)
     subcat = models.CharField(max_length=200)
-    image = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='static/img/project/')
 
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
 
+PROSSED = "pd"
+
+STATUS_CHOICES = (
+    ("PROSSED", "process"),
+    ("SHIPING", "shiping"),
+    ('ONTHEWAY', "ontheway"),
+    ('PROSSED', "receved"),
+)
+
+
 class Order(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    compete = models.BooleanField(default=False)
+    status = models.CharField(max_length=9,choices=STATUS_CHOICES,default=False)
     trasection_id = models.CharField(max_length=100,null=True,blank=True)
 
 

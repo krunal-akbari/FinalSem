@@ -25,8 +25,17 @@ def home(request):
 
 
 def chart(request):
-    return render(request, 'carts.html')
+    return render(request, 'chart.html')
 
+def status(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer)
+    else:
+        order = []
+    ctx = {"order": order}
+    print(order)
+    return render(request, 'status.html',ctx)
 
 def get_data(request):
     a = {
@@ -35,6 +44,8 @@ def get_data(request):
         "mar": 51,
         "apr": 40,
         "may": 100,
+        "a": 100,
+        "b": 100,
         "jun": 63,
     }
     return JsonResponse(a)
@@ -42,7 +53,13 @@ def get_data(request):
 
 def get_cat_data(request):
 
-    a = {"Mobile": 500, "Fan": 200}
+    a = {
+        "Mobile": 500, 
+        "Fan": 200,
+        "Laptop":420,
+        "T.V.": 600,
+        "Spicker": 300,
+    }
 
     return JsonResponse(a)
 
@@ -51,15 +68,9 @@ def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-    print(f'Action {action} , productId {productId}')
-
-    # print("the problem arive from below")
-
     customer = request.user.customer
     product = Product.objects.get(pid=productId)
-    order, created = Order.objects.get_or_create(customer=customer,
-                                                 compete=False)
-
+    order, created = Order.objects.get_or_create(customer=customer)
     orderItem, created = OrderItem.objects.get_or_create(order=order,
                                                          product=product)
 
@@ -89,8 +100,7 @@ def carts(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     compete=False)
+        order, created = Order.objects.get_or_create(customer=customer)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
     else:
@@ -105,8 +115,7 @@ def checkout(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     compete=False)
+        order, created = Order.objects.get_or_create(customer=customer)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
 
@@ -121,8 +130,7 @@ def checkout(request):
 def contactus(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     compete=False)
+        order, created = Order.objects.get_or_create(customer=customer)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
 
