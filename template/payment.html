@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PayPal Checkout Integration | Client Demo</title>
+    <style type="text/css" media="screen">
+      .button {
+        border: 3px solid black;
+        max-width: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span id="total" hidden>{{ order.get_cart_totle }}</span>
+    </div>
+    <!-- Set up a container element for the button -->
+
+    <div>
+      <span>details div</span> <br />
+      order amt <span>{{ order.get_cart_totle }}</span>
+    </div>
+
+    <div class="button">
+      <div id="paypal-button-container"></div>
+    </div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script charset="utf-8">
+      var total = document.getElementById("total").innerText;
+    </script>
+
+    <script>
+      //var total = document.getElementById("total").value;
+      //console.log(total);
+      // Render the PayPal button into #paypal-button-container
+      paypal
+        .Buttons({
+          // Set up the transaction
+          createOrder: function (data, actions) {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: total,
+                  },
+                },
+              ],
+            });
+          },
+
+          // Finalize the transaction
+          onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+              // Successful capture! For demo purposes:
+              console.log(
+                "Capture result",
+                orderData,
+                JSON.stringify(orderData, null, 2)
+              );
+              var transaction =
+                orderData.purchase_units[0].payments.captures[0];
+              alert(
+                "Transaction " +
+                  transaction.status +
+                  ": " +
+                  transaction.id +
+                  "\n\nSee console for all available details"
+              );
+              console.log(Successful);
+            });
+          },
+        })
+        .render("#paypal-button-container");
+    </script>
+  </body>
+</html>
