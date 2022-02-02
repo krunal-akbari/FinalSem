@@ -62,3 +62,55 @@ function updateUserfav(productid, action) {
       location.reload();
     });
 }
+function statusbar() {
+  var status = document.getElementById("status").innerText;
+  console.log(status);
+  var bar = document.getElementById("progressbar");
+  if (status == "PROSSED") {
+    for (i = 0; i < 1; i++) {
+      var li = document.createElement("li");
+      li.classList.add("active");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+    for (i = 0; i < 3; i++) {
+      var li = document.createElement("li");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+  }
+  if (status == "SHIPING") {
+    for (i = 0; i < 2; i++) {
+      var li = document.createElement("li");
+      li.classList.add("active");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+    for (i = 0; i < 2; i++) {
+      var li = document.createElement("li");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+  }
+  if (status == "ONTHEWAY") {
+    for (i = 0; i < 3; i++) {
+      var li = document.createElement("li");
+      li.classList.add("active");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+    for (i = 0; i < 1; i++) {
+      var li = document.createElement("li");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+  }
+  if (status == "RECIVED") {
+    for (i = 0; i < 4; i++) {
+      var li = document.createElement("li");
+      li.classList.add("active");
+      li.classList.add("step0");
+      bar.appendChild(li);
+    }
+  }
+}

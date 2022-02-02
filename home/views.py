@@ -7,13 +7,27 @@ import json
 
 # Create your views here.
 
+def payment(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
+        items = order.orderitem_set.all()
+        cartItem = order.get_cart_items
+
+    else:
+        items = []
+        order = {'get_cart_totle': 0, 'get_cart_items': 0}
+        cartItem = order['get_cart_items']
+    ctx = {'items': items, "order": order, "cartItem": cartItem}
+
+    return render(request, 'payment.html',ctx)
+
 
 def home(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     compete=False)
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
         chartItem = order.get_cart_items
     else:
@@ -30,7 +44,7 @@ def chart(request):
 def status(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer)
+        order, created = Order.objects.get_or_create(customer=customer,complate= False)
     else:
         order = []
     ctx = {"order": order}
@@ -54,7 +68,7 @@ def get_data(request):
 def get_cat_data(request):
 
     a = {
-        "Mobile": 500, 
+        "Mobile": 500,
         "Fan": 200,
         "Laptop":420,
         "T.V.": 600,
@@ -70,7 +84,7 @@ def updateItem(request):
     action = data['action']
     customer = request.user.customer
     product = Product.objects.get(pid=productId)
-    order, created = Order.objects.get_or_create(customer=customer)
+    order, created = Order.objects.get_or_create(customer=customer,complate=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order,
                                                          product=product)
 
@@ -100,7 +114,7 @@ def carts(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer)
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
     else:
@@ -110,12 +124,12 @@ def carts(request):
     ctx = {'items': items, "order": order, "cartItem": cartItem}
     return render(request, 'cart.html', ctx)
 
-
 def checkout(request):
+
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer)
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
 
@@ -130,7 +144,7 @@ def checkout(request):
 def contactus(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer)
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
 
@@ -146,7 +160,7 @@ def contactus(request):
 def favorite(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Wishlist.objects.get_or_create(customer=customer)
+        order, created = Wishlist.objects.get_or_create(customer=customer,complate=False)
         items =  order.wishlistitem_set.all()
     else:
         items = []
@@ -164,7 +178,7 @@ def updateFav(request):
     customer = request.user.customer
     product = Product.objects.get(pid=productId)
 
-    favorite,created = Wishlist.objects.get_or_create(customer=customer)
+    favorite,created = Wishlist.objects.get_or_create(customer=customer,complate=False)
     favoriteItem,created = WishlistItem.objects.get_or_create(product=product,wishlists=favorite)
 
 

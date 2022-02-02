@@ -32,7 +32,7 @@ STATUS_CHOICES = (
     ("PROSSED", "process"),
     ("SHIPING", "shiping"),
     ('ONTHEWAY', "ontheway"),
-    ('PROSSED', "receved"),
+    ('RECIVED', "receved"),
 )
 
 
@@ -40,7 +40,9 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=9,choices=STATUS_CHOICES,default=False)
+    complate = models.BooleanField(default=False,null=True)
     trasection_id = models.CharField(max_length=100,null=True,blank=True)
+    expectedtime = models.DateTimeField()
 
 
     def __str__(self) -> str:

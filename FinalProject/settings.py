@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'login',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -269,3 +270,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = '9638059086'
+
+
+#paypal setting 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+PAYPAL_RECEIVER_EMAIL = 'sb-87rye12845308@business.example.com'
+
+PAYPAL_TEST = True
