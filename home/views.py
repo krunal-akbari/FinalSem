@@ -1,44 +1,24 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishlist, WishlistItem
 from django.http import JsonResponse
-
+from . import datamakker
 import json
 
 # Create your views here.
+# all things are handle by context renaring so gfoh(get the **** out of here )
+
+
+def contactus(request):
+    return render(request, 'contectus.html')
 
 
 def payment(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-        items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
-
-    else:
-        items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0}
-        cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order, "cartItem": cartItem}
-
-    return render(request, 'payment.html', ctx)
+    return render(request, 'payment.html')
 
 
 def home(request):
-
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-        items = order.orderitem_set.all()
-        chartItem = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0}
-        chartItem = order['get_cart_items']
-    ctx = {"p": Product.objects.all(), "order": order,}
-    return render(request, 'home.html', ctx)
+    return render(request, 'home.html')
 
 
 def chart(request):
@@ -46,42 +26,33 @@ def chart(request):
 
 
 def status(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-    else:
-        order = []
-    ctx = {"order": order}
-    print(order)
-    return render(request, 'status.html', ctx)
+    return render(request, 'status.html')
 
 
+def about(request):
+    return render(request, 'aboutus.html')
+
+
+#data getting and priting
 def get_data(request):
-    a = {
-        "jan": 50,
-        "fab": 40,
-        "mar": 51,
-        "apr": 40,
-        "may": 100,
-        "a": 100,
-        "b": 100,
-        "jun": 63,
-    }
-    return JsonResponse(a)
+    return JsonResponse(datamakker.a)
 
 
 def get_cat_data(request):
+    return JsonResponse(datamakker.b)
 
-    a = {
-        "Mobile": 500,
-        "Fan": 200,
-        "Laptop": 420,
-        "T.V.": 600,
-        "Spicker": 300,
-    }
 
-    return JsonResponse(a)
+def profile(request):
+    if request.method == 'GET':
+        if 'update' in request.GET:
+            customer = request.user.customer
+            username = request.POST.get('name')
+            password = request.POST.get('password')
+            u1 = Customer(cname=username, password=password)
+            u1.save()
+            return redirect('/signin_up/otp/')
+
+    return render(request, 'profile.html')
 
 
 def updateItem(request):
@@ -118,53 +89,12 @@ def details(request, product_id):
 
 
 def carts(request):
-
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-        items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0}
-        cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order, "cartItem": cartItem}
-    return render(request, 'cart.html', ctx)
+    return render(request, 'cart.html')
 
 
 def checkout(request):
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-        items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
-
-    else:
-        items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0}
-        cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order, "cartItem": cartItem}
-    return render(request, 'checkout.html', ctx)
-
-
-def contactus(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
-        items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
-
-    else:
-        items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0}
-        cartItem = order['get_cart_items']
-    ctx = {'items': items, "order": order, "cartItem": cartItem}
-
-    return render(request, 'contectus.html', ctx)
+    return render(request, 'checkout.html')
 
 
 def favorite(request):
@@ -189,23 +119,8 @@ def updateFav(request):
     customer = request.user.customer
     product = Product.objects.get(pid=productId)
 
-    favorite, created = Wishlist.objects.get_or_create(customer=customer,
-                                                       complate=False)
+    favorite, created = Wishlist.objects.get_or_create(customer=customer)
     favoriteItem, created = WishlistItem.objects.get_or_create(
         product=product, wishlists=favorite)
 
     return JsonResponse("item was added", safe=False)
-
-
-def profile(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-    else:
-        customer = []
-    ctx = {"c": customer}
-
-    return render(request, 'profile.html', ctx)
-
-
-def about(request):
-    return render(request, 'aboutus.html')

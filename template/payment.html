@@ -15,13 +15,13 @@
 
   <body>
     <div>
-      <span id="total" hidden>{{ order.get_cart_totle }}</span>
+      <span id="total" hidden>{{ base_ctx.order.get_cart_totle }}</span>
     </div>
     <!-- Set up a container element for the button -->
 
     <div>
       <span>details div</span> <br />
-      order amt <span>{{ order.get_cart_totle }}</span>
+      order amt <span>{{ base_ctx.order.get_cart_totle }}</span>
     </div>
 
     <div class="button">
