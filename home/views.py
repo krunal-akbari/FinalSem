@@ -46,11 +46,20 @@ def profile(request):
     if request.method == 'GET':
         if 'update' in request.GET:
             customer = request.user.customer
-            username = request.POST.get('name')
-            password = request.POST.get('password')
-            u1 = Customer(cname=username, password=password)
-            u1.save()
-            return redirect('/signin_up/otp/')
+            fullname = request.GET.get('fullName')
+            country = request.GET.get('country')
+            address = request.GET.get('address')
+            phoneno = request.GET.get('phone')
+            email = request.GET.get('email')
+
+            customer.name =  fullname
+            customer.email =  email
+            customer.state = country
+            customer.address = address
+            customer.phoneno = phoneno
+            customer.save()
+
+            return redirect('/profile')
 
     return render(request, 'profile.html')
 
@@ -112,7 +121,6 @@ def updateFav(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-    print(f'Action {action} , productId {productId}')
 
     # print("the problem arive from below")
 
@@ -123,4 +131,11 @@ def updateFav(request):
     favoriteItem, created = WishlistItem.objects.get_or_create(
         product=product, wishlists=favorite)
 
+    if action == "add":
+        favoriteItem.save()
+    elif action == "delete":
+        favoriteItem.delete()
+
+    # if favoriteItem.quantity <= 0:
+        # favoriteItem.delete()
     return JsonResponse("item was added", safe=False)

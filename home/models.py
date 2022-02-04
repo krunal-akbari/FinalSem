@@ -8,7 +8,7 @@ class Customer(models.Model):
                                 null=True,
                                 blank=False)
     name = models.CharField(max_length=100, null=True)
-    email = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=101, null=True)
     phoneno = models.CharField(max_length=10, null=True)
     address = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='static/img/profile')
