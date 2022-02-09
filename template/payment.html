@@ -29,7 +29,7 @@
     </div>
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AepDl2edisUiK_2P8WMSCGBIksXZkSUtdVP8eZOFjOm92j5MP8ApMpKy9fo_RSsH5xp1431QzYUAdDuX&currency=USD"></script>
     <script charset="utf-8">
       var total = document.getElementById("total").innerText;
     </script>
@@ -38,6 +38,20 @@
       //var total = document.getElementById("total").value;
       //console.log(total);
       // Render the PayPal button into #paypal-button-container
+
+      function completeOrder() {
+        var url = "{% url 'complete' %}";
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            "X-CSRFToken": csrftoken,
+          },
+          body: JSON.stringify({ productId: productId }),
+        });
+      }
+
       paypal
         .Buttons({
           // Set up the transaction

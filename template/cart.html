@@ -78,10 +78,10 @@
               <h5>Cart Total</h5>
               <ul>
                 <li>
-                  Subtotal <span>{{ order.get_cart_totle }}</span>
+                  Subtotal <span>{{ base_ctx.order.get_cart_totle }}</span>
                 </li>
                 <li>
-                  Total <span>{{ order.get_cart_totle }}</span>
+                  Total <span>{{ base_ctx.order.get_cart_totle }}</span>
                 </li>
               </ul>
               <a href="/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>

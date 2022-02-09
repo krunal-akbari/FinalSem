@@ -8,6 +8,8 @@ import json
 # Create your views here.
 # all things are handle by context renaring so gfoh(get the **** out of here )
 
+# {{{
+
 
 def contactus(request):
     return render(request, 'contectus.html')
@@ -33,16 +35,28 @@ def about(request):
     return render(request, 'aboutus.html')
 
 
+def carts(request):
+    return render(request, 'cart.html')
+
+
+def checkout(request):
+
+    return render(request, 'checkout.html')
+
+
+# }}}
+
+
 #data getting and priting
-def get_data(request):
+def get_data(request):  # {{{
     return JsonResponse(datamakker.a)
 
 
 def get_cat_data(request):
-    return JsonResponse(datamakker.b)
+    return JsonResponse(datamakker.b)  # }}}
 
 
-def profile(request):
+def profile(request):  #{{{
     if request.method == 'GET':
         if 'update' in request.GET:
             customer = request.user.customer
@@ -52,8 +66,8 @@ def profile(request):
             phoneno = request.GET.get('phone')
             email = request.GET.get('email')
 
-            customer.name =  fullname
-            customer.email =  email
+            customer.name = fullname
+            customer.email = email
             customer.state = country
             customer.address = address
             customer.phoneno = phoneno
@@ -61,10 +75,10 @@ def profile(request):
 
             return redirect('/profile')
 
-    return render(request, 'profile.html')
+    return render(request, 'profile.html')  # }}}
 
 
-def updateItem(request):
+def updateItem(request):  # {{{
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
@@ -87,7 +101,7 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse("item was added", safe=False)
+    return JsonResponse("item was added", safe=False)  # }}}
 
 
 def details(request, product_id):
@@ -95,15 +109,6 @@ def details(request, product_id):
     print(product)
     ctx = {"product": product}
     return render(request, 'details.html', ctx)
-
-
-def carts(request):
-    return render(request, 'cart.html')
-
-
-def checkout(request):
-
-    return render(request, 'checkout.html')
 
 
 def favorite(request):
@@ -114,10 +119,11 @@ def favorite(request):
     else:
         items = []
     ctx = {"items": items}
-    return render(request, 'favorite.html', ctx)
+    return render(request, 'favorite.html', ctx
+                  )
 
 
-def updateFav(request):
+def updateFav(request):  # {{{
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
@@ -136,6 +142,4 @@ def updateFav(request):
     elif action == "delete":
         favoriteItem.delete()
 
-    # if favoriteItem.quantity <= 0:
-        # favoriteItem.delete()
-    return JsonResponse("item was added", safe=False)
+    return JsonResponse("item was added", safe=False)  # }}}
