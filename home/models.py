@@ -11,7 +11,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=101, null=True)
     phoneno = models.CharField(max_length=10, null=True)
     address = models.CharField(max_length=100, null=True)
-    image = models.ImageField(upload_to='static/img/profile')
+    image = models.ImageField(upload_to='static/img/profile',null=True)
     state = models.CharField(max_length=100, null=True)
 
     def __str__(self) -> str:

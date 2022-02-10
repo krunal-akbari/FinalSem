@@ -6,6 +6,7 @@ for (var i = 0; i < updatebtns.length; i++) {
     var action = this.dataset.action;
     if (user === "AnonymousUser") {
       console.log("Not the authenticated user");
+      window.location = "/signin_up/";
     } else {
       updateUserOrder(productid, action);
     }
@@ -39,6 +40,7 @@ for (var i = 0; i < updatebtns.length; i++) {
     var action = this.dataset.action;
     if (user === "AnonymousUser") {
       console.log("Not the authenticated user");
+      window.location = "/signin_up/";
     } else {
       updateUserfav(productid, action);
     }

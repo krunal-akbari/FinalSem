@@ -24,6 +24,7 @@ def payment(request):
 
 
 def home(request):
+    print(request.user)
     return render(request, 'home.html')
 
 
