@@ -5,12 +5,6 @@ from django.contrib.auth.models import User
 from . import models
 
 
-class CustomerForm(ModelForm):
-
-    class Meta:
-        model = models.CustomerModel
-        fields = ['cname', 'password']
-
 
 class CreateUserForm(UserCreationForm):
 

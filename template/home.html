@@ -28,6 +28,8 @@
             {% for x in base_ctx.p %}
             <div class="col-lg-3 col-md-4 col-sm-6 mix {{ x.cat }} {{ x.subcat }}">
                 <div class="featured__item">
+                    <div>
+                    </div>
                     <div
                         class="featured__item__pic set-bg"
                         data-setbg="{{ x.image }}"
@@ -88,7 +90,7 @@
                         <div class="latest-prdouct__slider__item">
                             {% with number as 0 %}
                             {% for x in p %}
-                            
+                             
                             <a href="#" class="latest-product__item">
                                 <div class="latest-product__item__pic">
                                     <img src="{{ x.image }}" alt="" />

@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('',views.home, name="user"),
+    path('',views.home, name="home"),
     path('chart',views.chart, name="chart"),
-    path('get_data',views.get_data, name="getdata"),
+    path('User_count',views.get_data, name="UserCount"),
     path('get_data/cat',views.get_cat_data, name="getdatacat"),
     path('update_item/',views.updateItem, name=""),
     path('update_fav/',views.updateFav, name=""),
@@ -16,4 +16,5 @@ urlpatterns = [
     path('about',views.about),
     path('status',views.status),
     path('payment',views.payment),
+    path('complate',views.complate,name="sucess")
 ]

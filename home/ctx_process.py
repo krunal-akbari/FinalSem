@@ -9,8 +9,7 @@ from .models import *
 def se_to_base(request):
     if request.user.is_authenticated:# {{{
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,
-                                                     complate=False)
+        order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
         chartItem = order.get_cart_items
         favItem = order.get_cart_items# }}}
@@ -19,16 +18,16 @@ def se_to_base(request):
         fav_item_count = favorite.get_fav_item_totle
     else:
         items = []
-        order = {'get_cart_totle': 0, 'get_cart_items': 0,'get_fav_item':0}
+        order = {'get_cart_totle': 0, 'get_cart_items': 0,}
         chartItem = order['get_cart_items']
-        fav_item_count = order['get_cart_items']
+        fav_item_count = 0
         customer = []
         fav_item = []
 
     print(fav_item_count)
     ctx = {
         "p": Product.objects.all(),
-        "ordr": order,
+        "order": order,
         'c': chartItem,
         'items': items,
         'coustomer': customer,

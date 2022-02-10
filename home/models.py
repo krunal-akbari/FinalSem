@@ -15,7 +15,7 @@ class Customer(models.Model):
     state = models.CharField(max_length=100, null=True)
 
     def __str__(self) -> str:
-        return self.name
+        return f"{self.name}"
 
 
 class Product(models.Model):
@@ -25,7 +25,7 @@ class Product(models.Model):
     digital = models.BooleanField(default=False, null=True, blank=True)
     cat = models.CharField(max_length=200)
     subcat = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='static/img/project/')
+    image = models.ImageField(upload_to='static/img/product/')
 
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
@@ -52,7 +52,7 @@ class Order(models.Model):
                               default=False)
     complate = models.BooleanField(default=False, null=True)
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
-    expectedtime = models.DateTimeField()
+    expectedtime = models.DateTimeField(null=True)
 
     def __str__(self) -> str:
         return str(self.id)

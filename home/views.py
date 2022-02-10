@@ -4,6 +4,7 @@ from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishli
 from django.http import JsonResponse
 from . import datamakker
 import json
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 # all things are handle by context renaring so gfoh(get the **** out of here )
@@ -19,15 +20,20 @@ def favorite(request):
     return render(request, 'favorite.html')
 
 
+def complate(request):
+    print("paymant has been recesived sucessfully")
+    return render(request, 'complate.html')
+
+
 def payment(request):
     return render(request, 'payment.html')
 
 
-def home(request):
-    print(request.user)
+def home(request): #randaring page
     return render(request, 'home.html')
 
-
+# https://stackoverflow.com/questions/15998140/how-to-limit-a-view-to-superuser-only
+@user_passes_test(lambda u:u.is_superuser)
 def chart(request):
     return render(request, 'chart.html')
 
@@ -111,7 +117,7 @@ def updateItem(request):  # {{{
 
 def details(request, product_id):
     product = get_object_or_404(Product, pid=product_id)
-    print(product)
+    # print(product)
     ctx = {"product": product}
     return render(request, 'details.html', ctx)
 
