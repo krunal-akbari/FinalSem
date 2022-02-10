@@ -108,6 +108,12 @@ class Wishlist(models.Model):
                                  blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def get_fav_item_totle(self):
+        orderitems = self.wishlistitem_set.all()
+        totle = orderitems.count()
+        return totle
+
 
 class WishlistItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

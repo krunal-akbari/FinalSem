@@ -15,6 +15,10 @@ def contactus(request):
     return render(request, 'contectus.html')
 
 
+def favorite(request):
+    return render(request, 'favorite.html')
+
+
 def payment(request):
     return render(request, 'payment.html')
 
@@ -109,18 +113,6 @@ def details(request, product_id):
     print(product)
     ctx = {"product": product}
     return render(request, 'details.html', ctx)
-
-
-def favorite(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        favorite, created = Wishlist.objects.get_or_create(customer=customer)
-        items = favorite.wishlistitem_set.all()
-    else:
-        items = []
-    ctx = {"items": items}
-    return render(request, 'favorite.html', ctx
-                  )
 
 
 def updateFav(request):  # {{{

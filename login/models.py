@@ -11,6 +11,5 @@ class CustomerModel(models.Model):
     password = models.CharField(max_length=50)
     email = models.CharField(max_length=40,null=True, blank=True)
 
-    def __repr__(self) -> str:
-        return self.cname   
-
+    def __str__(self):
+        return f"{self.cname}"
