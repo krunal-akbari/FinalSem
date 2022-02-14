@@ -6,13 +6,11 @@ from django.contrib.auth.models import User
 class ChartMaker:
     """ChartMaker."""
 
-
     def __init__(self):
         """get_date."""
         self.times = []
         self.product_selling_price = []
         self.product_selling_time = []
-        self.product_price_count= 0
 
     def get_date(self):
         u = User.objects.all()
@@ -28,24 +26,23 @@ class ChartMaker:
 
         return month_list
 
-
-    def selling_price(self,month):
+    def selling_price(self, month):
+        count = 0
         o = Order.objects.all().filter(status="RECIVED")
         for x in o:
             if x.expectedtime.month == month:
 
-                orderItem, created = OrderItem.objects.get_or_create(order=x)
-                self.product_price_count += orderItem.product.price
+                orderItem = OrderItem.objects.get(order=x)
+                count += orderItem.product.price
 
-        return self.product_price_count
-
+        return count
 
 
 # setting some variables
 
 c = ChartMaker()
 c.get_date()
-c.selling_price(1)
+print(c.selling_price(10))
 
 a = {
     "January": len(c.date_sorter(1)),
@@ -62,4 +59,17 @@ a = {
     "December": len(c.date_sorter(12)),
 }
 
-b = {"some": 10, "random": 20, "data": 30}
+b = {
+    "January": c.selling_price(1),
+    "February": c.selling_price(2),
+    "March": c.selling_price(3),
+    "April": c.selling_price(4),
+    "May": c.selling_price(5),
+    "June": c.selling_price(6),
+    "July": c.selling_price(7),
+    "August": c.selling_price(8),
+    "Suptember": c.selling_price(9),
+    "October": c.selling_price(10),
+    "Nevember": c.selling_price(11),
+    "December": c.selling_price(12),
+}

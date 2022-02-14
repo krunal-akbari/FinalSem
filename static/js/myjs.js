@@ -66,7 +66,6 @@ function updateUserfav(productid, action) {
 }
 function statusbar() {
   var status = document.getElementById("status").innerText;
-  console.log(status);
   var bar = document.getElementById("progressbar");
   if (status == "PROSSED") {
     for (i = 0; i < 1; i++) {

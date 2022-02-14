@@ -38,8 +38,10 @@ def chart(request):
     return render(request, 'chart.html')
 
 
-def status(request):
-    return render(request, 'status.html')
+def status(request,orderid):
+    order = Order.objects.get(id=orderid)
+    ctx = {"status":order.status,"id":order.id}
+    return render(request, 'status.html',ctx)
 
 
 def about(request):
