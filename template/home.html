@@ -189,5 +189,27 @@
     </div>
 </section>
 <!-- Latest Product Section End -->
+<script>
+        if (user != "AnonymousUser"){
+        }
+        else{
+            swal({
+              title: "Want loggin?",
+              text: "You are anonimus user Want to login",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete) => {
+              if (willDelete) {
+                  //redirect to signin_up page
+                  window.location.href = "/signin_up"
+              } else {
+                swal("you are only alow to show products and there details");
+              }
+            });
+        }
+
+</script>
 
 {% endblock %}

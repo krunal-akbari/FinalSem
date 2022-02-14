@@ -39,6 +39,11 @@
       //console.log(total);
       // Render the PayPal button into #paypal-button-container
 
+      function afterPayment() {
+        console.log("after payment");
+        window.location.href = "/order/success";
+      }
+
       function completeOrder() {
         var url = "{% url 'sucess' %}";
 
@@ -85,7 +90,8 @@
                   transaction.id +
                   "\n\nSee console for all available details"
               );
-              console.log(Successful);
+              console.log("Successful");
+              afterPayment();
             });
           },
         })

@@ -16,5 +16,6 @@ urlpatterns = [
     path('about',views.about),
     path('status/<int:orderid>/',views.status),
     path('payment',views.payment),
-    path('complate',views.complate,name="sucess")
+    path('complate',views.complate,name="sucess"),
+    path('order/success',views.order_sucess,name="sucess"),
 ]

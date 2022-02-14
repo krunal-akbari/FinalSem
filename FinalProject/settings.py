@@ -281,3 +281,4 @@ MEDIA_URL = '/media/'
 PAYPAL_RECEIVER_EMAIL = 'sb-87rye12845308@business.example.com'
 
 PAYPAL_TEST = True
+

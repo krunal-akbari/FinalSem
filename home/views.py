@@ -144,3 +144,6 @@ def updateFav(request):  # {{{
         favoriteItem.delete()
 
     return JsonResponse("item was added", safe=False)  # }}}
+
+def order_sucess(request,id,**kwargs):
+    return render(request, 'order_sucess.html')

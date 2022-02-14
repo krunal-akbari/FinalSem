@@ -20,6 +20,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="{%static 'css/font-awesome.min.css'%}" />
     <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}" />
     <link rel="stylesheet" href="{%static 'css/elegant-icons.css'%}" />
@@ -33,6 +34,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script>
+      var user = "{{ request.user }}";
+    </script>
   </head>
 
   <body>
@@ -425,7 +429,6 @@
     <script src="{% static 'js/myjs.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-      var user = "{{ request.user }}";
 
       function getToken(name) {
         let cookieValue = null;

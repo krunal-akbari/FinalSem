@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
+
 class Customer(models.Model):
     user = models.OneToOneField(User,
                                 on_delete=models.CASCADE,
@@ -24,7 +26,7 @@ class Product(models.Model):
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=True)
     cat = models.CharField(max_length=200)
-    subcat = models.CharField(max_length=200)
+    subcat = models.CharField(max_length=200,null=True)
     image = models.ImageField(upload_to='static/img/product/')
 
     def __str__(self) -> str:
