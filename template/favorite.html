@@ -23,7 +23,7 @@
                             <tr>
                                 <td class="shoping__cart__item">
                                     <img
-                                        src="{{ item.product.image.src }}"
+                                        src="{{ item.product.image.url }}"
                                         style="height: 100px"
                                         alt="img is not displayed"
                                         />
@@ -37,7 +37,7 @@
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <span
-                                        class="icon_close update-cart"
+                                        class="icon_close update-fav"
                                         data-productid="{{ item.product.pid }}"
                                         data-action="delete"
                                         ></span>

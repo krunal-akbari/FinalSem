@@ -50,7 +50,7 @@
       <div class="humberger__menu__cart">
         <ul>
           <li>
-            <a href="/favorite"><i class="fa fa-heart"></i> <span>1</span></a>
+            <a href="/favorite"><i class="fa fa-heart"></i> <span>{{ base_ctx.fav_item_total }}</span></a>
           </li>
           <li>
             <a href="/cart"
@@ -60,7 +60,7 @@
           </li>
         </ul>
         <div class="header__cart__price">
-          item: <span>{{ base_ctx.orderItem.get_cart_totle }}</span>
+          item: <span>{{ base_ctx.orderItem.get_cart_total }}</span>
         </div>
       </div>
       <div class="humberger__menu__widget">
@@ -179,7 +179,7 @@
                 <li>
                   <a href="/favorite"
                     ><i class="fa fa-heart"></i>
-                    <span>{{ base_ctx.fav_item_totle }}</span></a
+                    <span>{{ base_ctx.fav_item_total }}</span></a
                   >
                 </li>
                 <li>
@@ -190,7 +190,7 @@
                 </li>
               </ul>
               <div class="header__cart__price">
-                item: <span>{{ base_ctx.order.get_cart_totle }}</span>
+                item: <span>{{ base_ctx.order.get_cart_total }}</span>
               </div>
             </div>
           </div>

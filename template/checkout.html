@@ -108,14 +108,14 @@
               </div>
               <ul>
                 {% for item in base_ctx.items  %}
-                <li> {{ item.product.tname }} <span>{{ item.get_totle }}</span></li>
+                <li> {{ item.product.tname }} <span>{{ item.get_total }}</span></li>
                 {%  endfor %}
               </ul>
               <div class="checkout__order__subtotal">
-                Subtotal <span>{{ base_ctx.order.get_cart_totle }}</span>
+                Subtotal <span>{{ base_ctx.order.get_cart_total }}</span>
               </div>
               <div class="checkout__order__total">
-                Total <span>{{ base_ctx.order.get_cart_totle }}</span>
+                Total <span>{{ base_ctx.order.get_cart_total }}</span>
               </div>
               <div class="checkout__input__checkbox">
                 <label for="acc-or">

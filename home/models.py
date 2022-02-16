@@ -13,7 +13,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=101, null=True)
     phoneno = models.CharField(max_length=10, null=True)
     address = models.CharField(max_length=100, null=True)
-    image = models.ImageField(upload_to='static/img/profile',null=True)
+    image = models.ImageField(upload_to='img/profile',null=True)
     state = models.CharField(max_length=100, null=True)
 
     def __str__(self) -> str:
@@ -27,7 +27,7 @@ class Product(models.Model):
     digital = models.BooleanField(default=False, null=True, blank=True)
     cat = models.CharField(max_length=200)
     subcat = models.CharField(max_length=200,null=True)
-    image = models.ImageField(upload_to='static/img/product/')
+    image = models.ImageField(upload_to='img/product/')
 
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
@@ -60,16 +60,16 @@ class Order(models.Model):
         return str(self.id)
 
     @property
-    def get_cart_totle(self):
+    def get_cart_total(self):
         orderitems = self.orderitem_set.all()
-        totle = sum([item.get_totle for item in orderitems])
-        return totle
+        total = sum([item.get_total for item in orderitems])
+        return total
 
     @property
     def get_cart_items(self):
         orderitems = self.orderitem_set.all()
-        totle = sum([item.quantity for item in orderitems])
-        return totle
+        total = sum([item.quantity for item in orderitems])
+        return total
 
 
 class OrderItem(models.Model):
@@ -82,9 +82,9 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     @property
-    def get_totle(self):
-        totle = self.product.price * self.quantity
-        return totle
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
 
 
 class ShippingAddress(models.Model):
@@ -111,10 +111,10 @@ class Wishlist(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     @property
-    def get_fav_item_totle(self):
+    def get_fav_item_total(self):
         orderitems = self.wishlistitem_set.all()
-        totle = orderitems.count()
-        return totle
+        total = orderitems.count()
+        return total
 
 
 class WishlistItem(models.Model):
@@ -123,7 +123,7 @@ class WishlistItem(models.Model):
                                   on_delete=models.SET_NULL,
                                   null=True)
     @property
-    def get_fav_item_totle(self):
+    def get_fav_item_total(self):
         orderitems = self.orderitem_set.all()
-        totle = sum(orderitems)
-        return totle
+        total = sum(orderitems)
+        return total
