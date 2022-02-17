@@ -38,10 +38,9 @@
       //var total = document.getElementById("total").value;
       //console.log(total);
       // Render the PayPal button into #paypal-button-container
-
-      function afterPayment() {
+      function afterPayment(a) {
         console.log("after payment");
-        window.location.href = "/order/success";
+        window.location.href = "/order/success/{{ base_ctx.order.id }}/" + a;
       }
 
       function completeOrder() {
@@ -91,7 +90,7 @@
                   "\n\nSee console for all available details"
               );
               console.log("Successful");
-              afterPayment();
+              afterPayment(transaction.id);
             });
           },
         })

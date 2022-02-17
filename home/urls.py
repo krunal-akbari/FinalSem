@@ -14,8 +14,9 @@ urlpatterns = [
     path('favorite',views.favorite),
     path('profile',views.profile),
     path('about',views.about),
-    path('status/<int:orderid>/',views.status),
+    path('status/<int:orderid>/',views.status,name="status"),
     path('payment',views.payment),
     path('complate',views.complate,name="sucess"),
-    path('order/success',views.order_sucess,name="sucess"),
+    path('order/success/<int:id>/<str:trasection_id>',views.order_sucess,name="sucess"),
+    path('order_details',views.order_details,name="order_details"),
 ]

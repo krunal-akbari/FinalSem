@@ -11,8 +11,6 @@ def se_to_base(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer,complate=False)
         items = order.orderitem_set.all()
-        for x in items:
-            print(x)
         chartItem = order.get_cart_items
         favItem = order.get_cart_items# }}}
         favorite, created = Wishlist.objects.get_or_create(customer=customer)

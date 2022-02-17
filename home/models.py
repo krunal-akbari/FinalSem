@@ -51,10 +51,10 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=9,
                               choices=STATUS_CHOICES,
-                              default=False)
+                              default='PROSSED')
     complate = models.BooleanField(default=False, null=True)
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
-    expectedtime = models.DateTimeField(null=True)
+    expectedtime = models.DateTimeField(null=True,blank=True)
 
     def __str__(self) -> str:
         return str(self.id)

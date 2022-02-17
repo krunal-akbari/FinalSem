@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from . import datamakker
 import json
 from django.contrib.auth.decorators import user_passes_test
+import datetime
+
 
 # Create your views here.
 # all things are handle by context renaring so gfoh(get the **** out of here )
@@ -40,7 +42,8 @@ def chart(request):
 
 def status(request,orderid):
     order = Order.objects.get(id=orderid)
-    ctx = {"status":order.status,"id":order.id}
+    date = order.expectedtime
+    ctx = {"status":order.status,"id":order.id,"date":date}
     return render(request, 'status.html',ctx)
 
 
@@ -145,5 +148,18 @@ def updateFav(request):  # {{{
 
     return JsonResponse("item was added", safe=False)  # }}}
 
-def order_sucess(request,id,**kwargs):
+def order_sucess(request,id,trasection_id,**kwargs):
+    order = Order.objects.get(id=id)
+    order.trasection_id = trasection_id
+    order.date_ordered = datetime.datetime.now()
+    order.expectedtime = datetime.datetime.now() + datetime.timedelta(days=3)
+    order.complate = True
+    order.save()
     return render(request, 'order_sucess.html')
+
+def order_details(request):
+    
+    order = Order.objects.all().filter(customer=request.user.customer,complate=True)
+    ctx = {"orders": order}
+    return render(request, 'order_details.html',ctx)
+    # return render(request, 'order_details.html')

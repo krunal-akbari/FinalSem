@@ -31,10 +31,7 @@ class ChartMaker:
         o = Order.objects.all().filter(status="RECIVED")
         for x in o:
             if x.expectedtime.month == month:
-
-                orderItem = OrderItem.objects.get(order=x)
-                count += orderItem.product.price
-
+                count += x.get_cart_total
         return count
 
 
@@ -42,7 +39,7 @@ class ChartMaker:
 
 c = ChartMaker()
 c.get_date()
-print(c.selling_price(10))
+
 
 a = {
     "January": len(c.date_sorter(1)),
