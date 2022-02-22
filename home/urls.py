@@ -19,4 +19,5 @@ urlpatterns = [
     path('complate',views.complate,name="sucess"),
     path('order/success/<int:id>/<str:trasection_id>',views.order_sucess,name="sucess"),
     path('order_details',views.order_details,name="order_details"),
+    path('order_cancel/<int:id>',views.order_cancel,name="order_cancel"),
 ]

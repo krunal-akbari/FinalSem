@@ -163,3 +163,9 @@ def order_details(request):
     ctx = {"orders": order}
     return render(request, 'order_details.html',ctx)
     # return render(request, 'order_details.html')
+
+def order_cancel(request,id):
+    order = Order.objects.get(id=id)
+    order.delete()
+    return redirect('/order_details')
+

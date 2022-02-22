@@ -16,6 +16,7 @@ def user_details(request,*args, **kwargs):
 
 @api_view(['GET'])
 def get_order_details(request,id,*args, **kwargs):
-    order = Order.objects.get(id=id)
-    serializers = OrderSerializer(order, many=False)
+    # order = Order.objects.get(id=id)
+    order = Order.objects.all()
+    serializers = OrderSerializer(order, many=True)
     return Response(serializers.data)

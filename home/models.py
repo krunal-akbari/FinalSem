@@ -55,6 +55,7 @@ class Order(models.Model):
     complate = models.BooleanField(default=False, null=True)
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
     expectedtime = models.DateTimeField(null=True,blank=True)
+    # cancel = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.id)
