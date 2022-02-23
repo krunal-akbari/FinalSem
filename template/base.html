@@ -85,6 +85,7 @@
             <ul class="header__menu__dropdown">
               <li><a href="/cart">Shoping Cart</a></li>
               <li><a href="/checkout">Check Out</a></li>
+                    <li><a href="{% url 'order_details' %}">Order History</a></li>
             </ul>
           </li>
           <li><a href="/about">About Us</a></li>
@@ -454,8 +455,20 @@
         if (user != "AnonymousUser"){
             logged_in = document.getElementsByClassName('anon_or_loged');
             for(var i=0;i<logged_in.length;i++){
-                logged_in[i].innerText = "Logout"
+                logged_in[i].innerText = "Logout";
                 logged_in[i].href="/signin_up/logout"
+                //create div 
+                var div = document.createElement("div");
+                div.className = "test";
+                // create anchor tag that will display profile_logo.jpg 
+                var a = document.createElement("a");
+                a.href = "/profile";
+                a.innerHTML = "<img src='{% static 'img/profile_logo.jpg' %}' alt='profile_logo' style='width:15px'>";
+                //append anchor tag to div
+                div.appendChild(a);
+                //append div to logged_in
+                logged_in[i].appendChild(div);
+
             }
         }
         else{
@@ -464,3 +477,4 @@
     </script>
   </body>
 </html>
+

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
-from .models import Customer, OrderItem, Product, Order, ShippingAddress, Wishlist, WishlistItem
+from .models import *
 from django.http import JsonResponse
 from . import datamakker
 import json
@@ -73,17 +73,16 @@ def get_cat_data(request):
 
 
 def profile(request):  #{{{
-    if request.method == 'GET':
-        if 'update' in request.GET:
+    if request.method == 'POST':
+        if 'update' in request.POST:
             customer = request.user.customer
-            fullname = request.GET.get('fullName')
-            country = request.GET.get('country')
-            address = request.GET.get('address')
-            phoneno = request.GET.get('phone')
-            email = request.GET.get('email')
+
+            fullname = request.POST.get('fullName')
+            country = request.POST.get('country')
+            address = request.POST.get('address')
+            phoneno = request.POST.get('phone')
 
             customer.name = fullname
-            customer.email = email
             customer.state = country
             customer.address = address
             customer.phoneno = phoneno
@@ -92,6 +91,8 @@ def profile(request):  #{{{
             return redirect('/profile')
 
     return render(request, 'profile.html')  # }}}
+
+
 
 
 def updateItem(request):  # {{{
@@ -132,7 +133,6 @@ def updateFav(request):  # {{{
     productId = data['productId']
     action = data['action']
 
-    # print("the problem arive from below")
 
     customer = request.user.customer
     product = Product.objects.get(pid=productId)
@@ -166,6 +166,11 @@ def order_details(request):
 
 def order_cancel(request,id):
     order = Order.objects.get(id=id)
+    cancel,created = CancelOrder.objects.get_or_create(id=id)
+    cancel.customer = order.customer
+    cancel.trasection_id = order.trasection_id
+    cancel.cancelorder_time = datetime.datetime.now()
+    cancel.save()
     order.delete()
     return redirect('/order_details')
 

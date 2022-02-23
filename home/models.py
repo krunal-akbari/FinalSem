@@ -9,12 +9,12 @@ class Customer(models.Model):
                                 on_delete=models.CASCADE,
                                 null=True,
                                 blank=False)
-    name = models.CharField(max_length=100, null=True)
-    email = models.CharField(max_length=101, null=True)
-    phoneno = models.CharField(max_length=10, null=True)
-    address = models.CharField(max_length=100, null=True)
-    image = models.ImageField(upload_to='img/profile',null=True)
-    state = models.CharField(max_length=100, null=True)
+    name = models.CharField(max_length=100, null=True,blank=True)
+    email = models.CharField(max_length=101, null=True,blank=True)
+    phoneno = models.CharField(max_length=10, null=True,blank=True)
+    address = models.CharField(max_length=100, null=True,blank=True)
+    image = models.ImageField(upload_to='img/profile',null=True,blank=True)
+    state = models.CharField(max_length=100, null=True,blank=True)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -127,4 +127,28 @@ class WishlistItem(models.Model):
     def get_fav_item_total(self):
         orderitems = self.orderitem_set.all()
         total = sum(orderitems)
+        return total
+
+class CancelOrder(models.Model):
+    customer = models.ForeignKey(Customer,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=True)
+    date_ordered = models.DateTimeField(auto_now_add=True)
+    trasection_id = models.CharField(max_length=100, null=True, blank=True)
+    cancelorder_time = models.DateTimeField(null=True,blank=True)
+
+    def __str__(self) -> str:
+        return str(self.id)
+
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.quantity for item in orderitems])
         return total
