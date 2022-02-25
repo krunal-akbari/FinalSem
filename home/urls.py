@@ -20,4 +20,6 @@ urlpatterns = [
     path('order/success/<int:id>/<str:trasection_id>',views.order_sucess,name="sucess"),
     path('order_details',views.order_details,name="order_details"),
     path('order_cancel/<int:id>',views.order_cancel,name="order_cancel"),
+    path('order_cancel_details/<int:id>',views.order_cancel_details,name="order_cancel_details"),
+    path('cstatus/<int:orderid>/',views.cstatus,name="cancelstatus"),
 ]

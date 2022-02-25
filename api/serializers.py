@@ -12,3 +12,12 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+class CancelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CancelOrder
+        fields = '__all__'

@@ -174,3 +174,13 @@ def order_cancel(request,id):
     order.delete()
     return redirect('/order_details')
 
+def order_cancel_details(request,id):
+    customer = request.user.customer
+    cancel = CancelOrder.objects.all().filter(customer=customer)
+    ctx = {"orders": cancel}
+    return render(request, 'order_cancel_details.html',ctx)
+
+def cstatus(request,orderid):
+    order = CancelOrder.objects.get(id=orderid)
+    ctx = {"id":order.id}
+    return render(request, 'cstatus.html',ctx)
