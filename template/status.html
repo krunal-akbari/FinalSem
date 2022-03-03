@@ -80,7 +80,7 @@
                                 <p class="font-weight-bold">Order<br />Arrived</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="buttons">
                             <a href="{% url 'order_details' %}" class="btn btn-success">Back</a>
                             <a id="order_cancel"  class="btn btn-success">Cancel Order</a>
                         </div>
@@ -143,6 +143,26 @@
                         swal("Your order is safe!");
                     }
                 });});
+            var status = document.getElementById("status").innerText;
+            var bar = document.getElementById("progressbar");
+            if (status == "RECIVED") {
+                document.getElementById("order_cancel").style.display = "none";
+                d0 = document.getElementsByClassName("buttons");
+                //creat a link with class btn btn-success
+                var btn = document.createElement("a");
+                //set id name download
+                btn.id = "download";
+                btn.classList.add("btn");
+                btn.classList.add("btn-success");
+                //name it download receipt
+                btn.innerText = "Download Receipt";
+                //call download function in onclick
+                //append the link to the div
+                d0[0].appendChild(btn);}
+
+            $("#download").click(function(){
+                window.location.href = "{% url 'download' id %}";
+            });
         </script>
     </body>
 </html>

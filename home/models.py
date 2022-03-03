@@ -2,19 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-
 class Customer(models.Model):
     user = models.OneToOneField(User,
                                 on_delete=models.CASCADE,
                                 null=True,
                                 blank=False)
-    name = models.CharField(max_length=100, null=True,blank=True)
-    email = models.CharField(max_length=101, null=True,blank=True)
-    phoneno = models.CharField(max_length=10, null=True,blank=True)
-    address = models.CharField(max_length=100, null=True,blank=True)
-    image = models.ImageField(upload_to='img/profile',null=True,blank=True)
-    state = models.CharField(max_length=100, null=True,blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    email = models.CharField(max_length=101, null=True, blank=True)
+    phoneno = models.CharField(max_length=10, null=True, blank=True)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ImageField(upload_to='img/profile', null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -26,8 +24,10 @@ class Product(models.Model):
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=True)
     cat = models.CharField(max_length=200)
-    subcat = models.CharField(max_length=200,null=True)
+    subcat = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='img/product/')
+
+    # offerd_price = models.FloatField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
@@ -54,7 +54,8 @@ class Order(models.Model):
                               default='PROSSED')
     complate = models.BooleanField(default=False, null=True)
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
-    expectedtime = models.DateTimeField(null=True,blank=True)
+    expectedtime = models.DateTimeField(null=True, blank=True)
+
     # cancel = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self) -> str:
@@ -123,11 +124,13 @@ class WishlistItem(models.Model):
     wishlists = models.ForeignKey(Wishlist,
                                   on_delete=models.SET_NULL,
                                   null=True)
+
     @property
     def get_fav_item_total(self):
         orderitems = self.orderitem_set.all()
         total = sum(orderitems)
         return total
+
 
 class CancelOrder(models.Model):
     customer = models.ForeignKey(Customer,
@@ -136,7 +139,7 @@ class CancelOrder(models.Model):
                                  blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
-    cancelorder_time = models.DateTimeField(null=True,blank=True)
+    cancelorder_time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.id)
