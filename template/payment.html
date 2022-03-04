@@ -18,15 +18,25 @@
       <span id="total" hidden>{{ base_ctx.order.get_cart_total }}</span>
     </div>
     <!-- Set up a container element for the button -->
+    <center>
+      <div
+        style="
+          text-align: center;
+          max-height: 100px;
+          max-width: 300px;
+          margin-top: 100px;
+        "
+      >
+        <div>
+          <span>details div</span> <br />
+          order amt <span>{{ base_ctx.order.get_cart_total }}</span>
+        </div>
 
-    <div>
-      <span>details div</span> <br />
-      order amt <span>{{ base_ctx.order.get_cart_total }}</span>
-    </div>
-
-    <div class="button">
-      <div id="paypal-button-container"></div>
-    </div>
+        <div class="button">
+          <div id="paypal-button-container"></div>
+        </div>
+      </div>
+    </center>
 
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AepDl2edisUiK_2P8WMSCGBIksXZkSUtdVP8eZOFjOm92j5MP8ApMpKy9fo_RSsH5xp1431QzYUAdDuX&currency=USD"></script>

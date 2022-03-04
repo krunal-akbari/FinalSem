@@ -22,7 +22,6 @@ class Product(models.Model):
     pid = models.AutoField(primary_key=True)
     tname = models.CharField(max_length=200)
     price = models.FloatField()
-    digital = models.BooleanField(default=False, null=True, blank=True)
     cat = models.CharField(max_length=200)
     subcat = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='img/product/')

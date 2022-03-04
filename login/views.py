@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.core.mail import send_mail
+from django.contrib.auth import authenticate
 import random
 from .forms import *
 
@@ -73,4 +74,14 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
+def change_password(request):
+    username = request.user.username
+    user = authenticate(username=username, password='admin')
+    if user is not None:
+        user.set_password('kishan')
+        print('Change password')
 
+    else: 
+        print("user is not exist")
+    
+    return HttpResponse(user)
