@@ -27,7 +27,7 @@ class Product(models.Model):
     subcat = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='img/product/')
 
-    # offerd_price = models.FloatField(null=True, blank=True)
+    offerd_price = models.FloatField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
@@ -56,7 +56,6 @@ class Order(models.Model):
     trasection_id = models.CharField(max_length=100, null=True, blank=True)
     expectedtime = models.DateTimeField(null=True, blank=True)
 
-    # cancel = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.id)
@@ -155,3 +154,14 @@ class CancelOrder(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
+
+class Complains(models.Model):
+    cusomter = models.ForeignKey(Customer,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=True)
+    date_completed = models.DateTimeField(auto_now_add=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    complain = models.CharField(max_length=200)
+
+

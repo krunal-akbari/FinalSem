@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from . import views
 urlpatterns = [
     path('',views.home, name="home"),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('order_cancel/<int:id>',views.order_cancel,name="order_cancel"),
     path('order_cancel_details/<int:id>',views.order_cancel_details,name="order_cancel_details"),
     path('cstatus/<int:orderid>/',views.cstatus,name="cancelstatus"),
+    path('order/feedback/',views.order_feedback,name="order_feedback"),
 ]

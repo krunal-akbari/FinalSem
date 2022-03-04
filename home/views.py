@@ -123,7 +123,6 @@ def updateItem(request):  # {{{
 
 def details(request, product_id):
     product = get_object_or_404(Product, pid=product_id)
-    # print(product)
     ctx = {"product": product}
     return render(request, 'details.html', ctx)
 
@@ -148,6 +147,7 @@ def updateFav(request):  # {{{
 
     return JsonResponse("item was added", safe=False)  # }}}
 
+# {{{
 def order_sucess(request,id,trasection_id,**kwargs):
     order = Order.objects.get(id=id)
     order.trasection_id = trasection_id
@@ -183,4 +183,8 @@ def order_cancel_details(request,id):
 def cstatus(request,orderid):
     order = CancelOrder.objects.get(id=orderid)
     ctx = {"id":order.id}
-    return render(request, 'cstatus.html',ctx)
+    return render(request, 'cstatus.html',ctx)# }}}
+
+def order_feedback(request):
+    return render(request, 'feedback.html')
+

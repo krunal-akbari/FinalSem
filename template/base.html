@@ -255,6 +255,34 @@
     </section>
     <!-- Categories Section End -->
 
+    <form class="example" action="/home.html">
+                <center>
+                    <i class="fa fa-search"></i>
+
+                <input  type="text" placeholder="Search.." name="search">
+                </center>
+
+            </form>
+                <style>
+                    .example {
+                        margin: 50px;
+                        padding: 50px;
+                    }
+                    .example input {
+                        width: 900px;
+                        border-radius: 6px;
+                        box-sizing: border-box;
+                        border: 2px solid #ccc;
+                        font-size: 16px;
+                        background-image: url('searchicon.png');
+                        background-position: 10px 10px; 
+                        background-repeat: no-repeat;
+                        padding: 12px 20px 12px 40px;
+                        -webkit-transition: width 0.4s ease-in-out;
+                        transition: width 0.4s ease-in-out;
+                    }
+                </style>
+
     {% block content %} {% endblock content %}
 
     <div class="container"></div>
