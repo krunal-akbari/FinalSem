@@ -9,5 +9,6 @@ urlpatterns = [
     path('signin_up/',include('login.urls')),
     path('api/',include('api.urls')),
     path('order/',include('order.urls')),
+    path('report/',include('report.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

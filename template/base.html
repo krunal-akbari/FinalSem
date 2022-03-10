@@ -251,23 +251,23 @@
             </div>
           </div>
         </div>
-      </div>
+      </divbase>
     </section>
     <!-- Categories Section End -->
 
-    <form class="example" action="/home.html">
-                <center>
-                    <i class="fa fa-search"></i>
+    <form class="example" method="POST" id="form_search" >
+        {% csrf_token %}
+        <center>
+            <i class="fa fa-search"></i>
+            <input  type="text" placeholder="Search.." name="search" id="form_search_text" >
+        </center>
 
-                <input  type="text" placeholder="Search.." name="search">
-                </center>
-
-            </form>
-                <style>
-                    .example {
-                        margin: 50px;
-                        padding: 50px;
-                    }
+    </form>
+    <style>
+.example {
+    margin: 50px;
+    padding: 50px;
+}
                     .example input {
                         width: 900px;
                         border-radius: 6px;
@@ -275,13 +275,13 @@
                         border: 2px solid #ccc;
                         font-size: 16px;
                         background-image: url('searchicon.png');
-                        background-position: 10px 10px; 
+                        background-position: 10px 10px;
                         background-repeat: no-repeat;
                         padding: 12px 20px 12px 40px;
                         -webkit-transition: width 0.4s ease-in-out;
                         transition: width 0.4s ease-in-out;
                     }
-                </style>
+    </style>
 
     {% block content %} {% endblock content %}
 
@@ -289,160 +289,160 @@
 
     <!-- servicse section start -->
     <div class="sec-title text-center">
-      <h2 class="wow animated bounceInLeft">Service</h2>
-      <p class="wow animated bounceInRight">The Key Features of our Job</p>
+        <h2 class="wow animated bounceInLeft">Service</h2>
+        <p class="wow animated bounceInRight">The Key Features of our Job</p>
     </div>
     <section id="service">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
-          >
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fa fa-home fa-3x"></i>
-              </div>
-              <h3>Shopping</h3>
-              <p>
-                The system is to provide online Shopping service to customers as
-                well as make the Market administrative process easier.
-              </p>
-            </div>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div
+                    class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
+                    >
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fa fa-home fa-3x"></i>
+                        </div>
+                        <h3>Shopping</h3>
+                        <p>
+                            The system is to provide online Shopping service to customers as
+                            well as make the Market administrative process easier.
+                        </p>
+                    </div>
+                </div>
 
-          <div
-            class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
-            data-wow-delay="0.3s"
-          >
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fa fa-tasks fa-3x"></i>
-              </div>
-              <h3>Menu</h3>
-              <p>
-                The system is to provide online Shopping service to customers as
-                well as make the Market administrative process easier.
-              </p>
-            </div>
-          </div>
+                <div
+                    class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
+                    data-wow-delay="0.3s"
+                    >
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fa fa-tasks fa-3x"></i>
+                        </div>
+                        <h3>Menu</h3>
+                        <p>
+                            The system is to provide online Shopping service to customers as
+                            well as make the Market administrative process easier.
+                        </p>
+                    </div>
+                </div>
 
-          <div
-            class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
-            data-wow-delay="0.6s"
-          >
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fa fa-clock-o fa-3x"></i>
-              </div>
-              <h3>Open Time</h3>
-              <p>
-                The system is to provide online Shopping service to customers as
-                well as make the Market administrative process easier.
-              </p>
-            </div>
-          </div>
+                <div
+                    class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
+                    data-wow-delay="0.6s"
+                    >
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fa fa-clock-o fa-3x"></i>
+                        </div>
+                        <h3>Open Time</h3>
+                        <p>
+                            The system is to provide online Shopping service to customers as
+                            well as make the Market administrative process easier.
+                        </p>
+                    </div>
+                </div>
 
-          <div
-            class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
-            data-wow-delay="0.9s"
-          >
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fa fa-heart fa-3x"></i>
-              </div>
+                <div
+                    class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"
+                    data-wow-delay="0.9s"
+                    >
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fa fa-heart fa-3x"></i>
+                        </div>
 
-              <h3>Security</h3>
-              <p>
-                The system is to provide online Shopping service to customers as
-                well as make the Market administrative process easier.
-              </p>
+                        <h3>Security</h3>
+                        <p>
+                            The system is to provide online Shopping service to customers as
+                            well as make the Market administrative process easier.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- servicse section end -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="footer__about">
-              <div class="footer__about__logo">
-                <a href="/"><img src="{% static 'img/logo.png' %}" alt="" /></a>
-              </div>
-              <ul>
-                <li>Address: 60-49 Road 11378 New York</li>
-                <li>Phone: +65 11.188.888</li>
-                <li>Email: hello@colorlib.com</li>
-              </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="/"><img src="{% static 'img/logo.png' %}" alt="" /></a>
+                        </div>
+                        <ul>
+                            <li>Address: 60-49 Road 11378 New York</li>
+                            <li>Phone: +65 11.188.888</li>
+                            <li>Email: hello@colorlib.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Useful Links</h6>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Our Sitemap</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Who We Are</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Innovation</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Join Our Newsletter Now</h6>
+                        <p>
+                            Get E-mail updates about our latest shop and special offers.
+                        </p>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your mail" />
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-            <div class="footer__widget">
-              <h6>Useful Links</h6>
-              <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">About Our Shop</a></li>
-                <li><a href="#">Secure Shopping</a></li>
-                <li><a href="#">Delivery infomation</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Our Sitemap</a></li>
-              </ul>
-              <ul>
-                <li><a href="#">Who We Are</a></li>
-                <li><a href="#">Our Services</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Innovation</a></li>
-                <li><a href="#">Testimonials</a></li>
-              </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                All rights reserved | This template is made with
+                                <i class="fa fa-heart" aria-hidden="true"></i> by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment">
+                            <img src="{% static 'img/payment-item.png' %}" alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-12">
-            <div class="footer__widget">
-              <h6>Join Our Newsletter Now</h6>
-              <p>
-                Get E-mail updates about our latest shop and special offers.
-              </p>
-              <form action="#">
-                <input type="text" placeholder="Enter your mail" />
-                <button type="submit" class="site-btn">Subscribe</button>
-              </form>
-              <div class="footer__widget__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="footer__copyright">
-              <div class="footer__copyright__text">
-                <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart" aria-hidden="true"></i> by
-                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-              </div>
-              <div class="footer__copyright__payment">
-                <img src="{% static 'img/payment-item.png' %}" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
     <!-- Footer Section End -->
 
@@ -460,23 +460,23 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
 
-      function getToken(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== "") {
-          var cookies = document.cookie.split(";");
-          for (let i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === name + "=") {
-              cookieValue = decodeURIComponent(
-                cookie.substring(name.length + 1)
-              );
-              break;
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                var cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === name + "=") {
+                        cookieValue = decodeURIComponent(
+                            cookie.substring(name.length + 1)
+                        );
+                        break;
+                    }
+                }
             }
-          }
+            return cookieValue;
         }
-        return cookieValue;
-      }
-      var csrftoken = getToken("csrftoken");
+        var csrftoken = getToken("csrftoken");
     </script>
     <script>
         //shpx
@@ -485,10 +485,10 @@
             for(var i=0;i<logged_in.length;i++){
                 logged_in[i].innerText = "Logout";
                 logged_in[i].href="/signin_up/logout"
-                //create div 
+                //create div
                 var div = document.createElement("div");
                 div.className = "test";
-                // create anchor tag that will display profile_logo.jpg 
+                // create anchor tag that will display profile_logo.jpg
                 var a = document.createElement("a");
                 a.href = "/profile";
                 a.innerHTML = "<img src='{% static 'img/profile_logo.jpg' %}' alt='profile_logo' style='width:15px'>";

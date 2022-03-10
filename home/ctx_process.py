@@ -1,4 +1,6 @@
 from .models import *
+from django.shortcuts import redirect
+
 
 # p         for     product
 # c         for     products total in cart
@@ -7,6 +9,18 @@ from .models import *
 
 
 def se_to_base(request):
+
+    if request.method == 'POST':
+        if 'form_search' in request.POST:
+            print('search form actvate')
+            search = request.POST['form_search_text']
+            print(search)
+            if search:
+                return redirect('/search/' + search)
+            else:
+                return redirect('/')
+
+
     if request.user.is_authenticated:# {{{
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer,complate=False)
@@ -24,7 +38,6 @@ def se_to_base(request):
         customer = []
         fav_item = []
 
-    print(fav_item_count)
     ctx = {
         "p": Product.objects.all(),
         "order": order,

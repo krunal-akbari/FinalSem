@@ -20,7 +20,6 @@ def user_details(request, id, *args, **kwargs):
     try:
         user = User.objects.get(id=id)
         customer = Customer.objects.get(user=user)
-        print(customer)
     except Customer.DoesNotExist:
         return Response(status=404)
     if request.method == 'GET':

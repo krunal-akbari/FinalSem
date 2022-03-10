@@ -4,8 +4,6 @@ from .models import *
 from django.http import JsonResponse
 from . import datamakker
 import json
-from django.contrib.auth.decorators import user_passes_test
-import datetime
 
 
 # Create your views here.
@@ -35,9 +33,6 @@ def home(request): #randaring page
     return render(request, 'home.html')
 
 # https://stackoverflow.com/questions/15998140/how-to-limit-a-view-to-superuser-only
-@user_passes_test(lambda u:u.is_superuser)
-def chart(request):
-    return render(request, 'chart.html')
 
 
 def status(request,orderid):
@@ -146,4 +141,12 @@ def updateFav(request):  # {{{
         favoriteItem.delete()
 
     return JsonResponse("item was added", safe=False)  # }}}
+
+
+def search(request, query):
+    print(query)
+print(f"search")# __AUTO_GENERATED_PRINTF__
+    products = Product.objects.filter(tname__icontains=query)
+    ctx = {"products": products, "query": query}
+    return render(request, 'search.html', ctx)
 

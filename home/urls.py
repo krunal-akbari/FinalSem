@@ -16,5 +16,5 @@ urlpatterns = [
     path('status/<int:orderid>/',views.status,name="status"),
     path('payment',views.payment,name="payment"),
     path('complate',views.complate,name="sucess"),
-    path('chart',views.chart, name="chart"),
+    path('search/<str:query>',views.search,name="search"),
 ]

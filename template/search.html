@@ -1,2 +1,20 @@
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+  </head>
+  <body>
+    {% for x in products %}
+    <div>
+      <img
+        src="{{ x.image.url }}"
+        style="max-width: 250px; max-height: 150px"
+      />
+      {{ x.tname }}
+      {{ x.price }}
+    </div>
+    {% endfor %}
+  </body>
+</html>
