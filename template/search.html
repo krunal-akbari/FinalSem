@@ -1,20 +1,118 @@
+{%load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Search</title>
-  </head>
-  <body>
-    {% for x in products %}
-    <div>
-      <img
-        src="{{ x.image.url }}"
-        style="max-width: 250px; max-height: 150px"
-      />
-      {{ x.tname }}
-      {{ x.price }}
-    </div>
-    {% endfor %}
-  </body>
+
+<html lang="zxx">
+    <head>
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}" />
+    <style>
+        .select-btn{
+	font-size: 14px;
+	color: #000000;
+	font-weight: 800;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 13px 30px 12px;
+	background: #ffffff;
+	border-radius:  50%;
+
+}
+.primary-btn {
+	display: inline-block;
+	font-size: 14px;
+	padding: 10px 28px 10px;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-weight: 700;
+	background: #7fad39;
+	letter-spacing: 2px;
+}
+
+    </style>
+        </head>
+    <section class="section profile">
+        <!--{{{-->
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div
+                        class="card-body profile-card pt-4 d-flex flex-column align-items-center"
+                        >
+                        <object data="{{ base_ctx.coustomer.image }}" type="image/png">
+                            <img src="{% static 'img/profile/default.jpg' %}" alt="default img" class="rounded-circle" /> </object>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img src="static/img/logo.png"height=300px>
+                                    </td>
+                                   <td>
+                                       <h1> Phone </td>
+                                       <td> &#8377;500</h1>
+                                    </td>
+                                    <td><button class="select-btn" id="xs">XS</button>
+                                        <button class="select-btn" id="s">S</button>
+                                        <button class="select-btn" id="m">M</button>
+                                        <button class="select-btn" id="l">L</button>
+                                        <button class="select-btn" id="xl">XL</button>,</td>
+                                        <td>
+                                            <a href="#" class="primary-btn">ADD TO CARD</a>
+                                        </td>
+                                    </tr>
+                                <tr>
+                                    <td>
+                                        <img src="static/img/logo.png"height=300>
+                                    <td>
+                                       <h1> phone </td>
+                                        <td>&#8377;400</h1>
+                                            </td>
+                                            <td>
+                                                <div class="product_details_price">&#8377;500.00</div>
+                            <button class="select-btn" id="xs">XS</button>
+                            <button class="select-btn" id="s">S</button>
+                            <button class="select-btn" id="m">M</button>
+                            <button class="select-btn" id="l">L</button>
+                            <button class="select-btn" id="xl">XL</button>,</td>
+                            <td>
+                                <a href="#" class="primary-btn">ADD TO CARD</a>
+                            </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="static/img/logo.png"height=300>
+                                    <td>
+                                       <h1> phone </td>
+                                        <td>&#8377;400</h1>
+                                            </td>
+                                           <td> <button class="select-btn" id="xs">XS</button>
+                            <button class="select-btn" id="s">S</button>
+                            <button class="select-btn" id="m">M</button>
+                            <button class="select-btn" id="l">L</button>
+                            <button class="select-btn" id="xl">XL</button>,</td>
+                            <td>
+                                <a href="#" class="primary-btn">ADD TO CARD</a>
+                            </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="static/img/logo.png"height=300>
+                                    <td>
+                                       <h1> phone </td>
+                                        <td>&#8377;400</h1>
+                                            </td>
+                                            <td><button class="select-btn" id="xs">XS</button>
+                            <button class="select-btn" id="s">S</button>
+                            <button class="select-btn" id="m">M</button>
+                            <button class="select-btn" id="l">L</button>
+                            <button class="select-btn" id="xl">XL</button>,</td>
+                            <td>
+                                <a href="#" class="primary-btn">ADD TO CARD</a>
+                            </td>
+                                </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </html>

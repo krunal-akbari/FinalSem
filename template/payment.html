@@ -16,7 +16,7 @@
 
   <body>
     <div>
-      <span id="total" hidden>{{ base_ctx.order.get_cart_total }}</span>
+      <span id="total" hidden>{{ base_ctx.order.get_total_discount }}</span>
     </div>
     <!-- Set up a container element for the button -->
     <center>
@@ -30,7 +30,7 @@
       >
         <div>
           <span>details div</span> <br />
-          order amt <span>{{ base_ctx.order.get_cart_total }}</span>
+          order amt <span>{{ base_ctx.order.get_total_discount }}</span>
         </div>
 
         <div class="button">
@@ -42,7 +42,7 @@
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AepDl2edisUiK_2P8WMSCGBIksXZkSUtdVP8eZOFjOm92j5MP8ApMpKy9fo_RSsH5xp1431QzYUAdDuX&currency=USD"></script>
     <script charset="utf-8">
-      var total = document.getElementById("total").innerText;
+      var total = {{ base_ctx.order.get_total_discount }};
     </script>
 
     <script>

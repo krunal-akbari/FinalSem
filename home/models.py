@@ -69,7 +69,7 @@ class Order(models.Model):
     @property
     def get_total_discount(self):
         orderitems = self.orderitem_set.all()
-        total = sum([item.get_total_discount for item in orderitems])
+        total = sum([item.get_total_offer for item in orderitems])
         return total
     
     @property
@@ -90,7 +90,13 @@ class OrderItem(models.Model):
 
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
+        total = (self.product.price * self.quantity)
+        return total
+
+
+    @property
+    def get_total_offer(self):
+        total = (self.product.price * self.quantity) - (self.quantity * self.product.offerd_price)
         return total
     
     @property
@@ -174,10 +180,3 @@ class Complains(models.Model):
     date_completed = models.DateTimeField(auto_now_add=True)
     complain = models.CharField(max_length=200)
 
-class FeedBack(models.Model):
-    customer = models.ForeignKey(Customer,
-                                 on_delete=models.SET_NULL,
-                                 null=True,
-                                 blank=True)
-    date_feedback = models.DateTimeField(auto_now_add=True)
-    feedback = models.CharField(max_length=200)

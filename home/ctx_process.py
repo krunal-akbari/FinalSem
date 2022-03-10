@@ -10,15 +10,6 @@ from django.shortcuts import redirect
 
 def se_to_base(request):
 
-    if request.method == 'POST':
-        if 'form_search' in request.POST:
-            print('search form actvate')
-            search = request.POST['form_search_text']
-            print(search)
-            if search:
-                return redirect('/search/' + search)
-            else:
-                return redirect('/')
 
 
     if request.user.is_authenticated:# {{{

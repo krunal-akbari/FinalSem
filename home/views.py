@@ -145,7 +145,6 @@ def updateFav(request):  # {{{
 
 def search(request, query):
     print(query)
-print(f"search")# __AUTO_GENERATED_PRINTF__
     products = Product.objects.filter(tname__icontains=query)
     ctx = {"products": products, "query": query}
     return render(request, 'search.html', ctx)

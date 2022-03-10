@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from home.models import *
+from order.models import *
 import datetime
 
 # Create your views here.
@@ -48,10 +49,17 @@ def order_cancel_details(request, id):
 def order_feedback(request, id):
     if request.method == 'POST':
         order = Order.objects.get(id=id)
-        complains = Complains.objects.get_or_create(id=id)
-        return redirect('/order_details')
+        phoneno = request.POST.get('telephone')
+        feedback = request.POST.get('complaint')
+        email = request.POST.get('_replyto')
+        fb , created= FeedBack.objects.get_or_create(customer=request.user.customer,email=email,phoneno=phoneno, feedback=feedback)
+        fb.save()
+        return redirect('/order/order_details')
     return render(request, 'feedback.html')
 
+
+def complaint(request):
+    return render(request, 'complain.html')
 
 def cstatus(request, orderid):
     order = CancelOrder.objects.get(id=orderid)

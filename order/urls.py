@@ -9,5 +9,6 @@ urlpatterns = [
     path('order_cancel_details/<int:id>',views.order_cancel_details,name="order_cancel_details"),
     path('feedback/<int:id>/',views.order_feedback,name="order_feedback"),
     path('cstatus/<int:orderid>/',views.cstatus,name="cancelstatus"),
+    path('complain',views.complaint,name="complain"),
 ]
 
