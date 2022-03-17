@@ -1,33 +1,36 @@
+<!--{% extends 'base.html' %} {% block content %} {% load static %}-->
+<!--{% comment %}-->
+<!--{% endcomment %}-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Add meta tags for mobile and IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    cadsc
     <title>PayPal Checkout Integration | Client Demo</title>
-    <style type="text/css" media="screen">
-      .button {
-        border: 3px solid black;
-        max-width: 500px;
-      }
-    </style>
   </head>
 
   <body>
+    <style>
+      @media screen and (max-width: 400px) {
+        #paypal-button-container {
+          width: 100%;
+        }
+      }
+
+      @media screen and (min-width: 400px) {
+        #paypal-button-container {
+          width: 250px;
+        }
+      }
+    </style>
+
     <div>
       <span id="total" hidden>{{ base_ctx.order.get_total_discount }}</span>
     </div>
     <!-- Set up a container element for the button -->
     <center>
-      <div
-        style="
-          text-align: center;
-          max-height: 100px;
-          max-width: 300px;
-          margin-top: 100px;
-        "
-      >
+      <div>
         <div>
           <span>details div</span> <br />
           order amt <span>{{ base_ctx.order.get_total_discount }}</span>
@@ -46,6 +49,7 @@
     </script>
 
     <script>
+      // Customize button (optional)
       //var total = document.getElementById("total").value;
       //console.log(total);
       // Render the PayPal button into #paypal-button-container
@@ -106,6 +110,20 @@
           },
         })
         .render("#paypal-button-container");
+      paypal.Button.render(
+        {
+          style: {
+            size: {
+              size: "responsive",
+              shape: "rect",
+              color: "blue",
+            },
+          },
+        },
+        "#paypal-button-container"
+      );
     </script>
   </body>
 </html>
+
+{% endblock %} {% comment %} {% endcomment %}

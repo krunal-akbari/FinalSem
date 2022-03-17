@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+# from django.template import render_to_response
+# from django.template import RequestContext
 from django.http import JsonResponse
 from .models import *
 from django.http import JsonResponse
@@ -143,9 +145,16 @@ def updateFav(request):  # {{{
     return JsonResponse("item was added", safe=False)  # }}}
 
 
-def search(request, query):
-    print(query)
-    products = Product.objects.filter(tname__icontains=query)
-    ctx = {"products": products, "query": query}
-    return render(request, 'search.html', ctx)
+def search(request):
+    if request.method == "POST":
+        query = request.POST.get("search")
+        products = Product.objects.filter(tname__icontains=query)
+        if len(products) == 0:
+            return redirect("/")
+        ctx = {"products": products, "query": query}
+        return render(request, 'search.html',ctx)
 
+# def handler404(request,*args,**kwargs):
+    # response = render_to_response('404.html',{},context_instance=RequestContext(request))
+    # response.code = 404
+    # return response
