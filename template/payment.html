@@ -1,7 +1,4 @@
-<!--{% extends 'base.html' %} {% block content %} {% load static %}-->
-<!--{% comment %}-->
-<!--{% endcomment %}-->
-<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %} {% load static %}
 <html lang="en">
   <head>
     <!-- Add meta tags for mobile and IE -->
@@ -11,19 +8,18 @@
   </head>
 
   <body>
-    <style>
-      @media screen and (max-width: 400px) {
-        #paypal-button-container {
-          width: 100%;
-        }
-      }
+    {% comment %}<style> @media screen and (max-width: 400px) {{% endcomment %}
+        {% comment %}#paypal-button-container {{% endcomment %}
+          {% comment %}width: 100%;{% endcomment %}
+        {% comment %}}{% endcomment %}
+      {% comment %}}{% endcomment %}
 
-      @media screen and (min-width: 400px) {
-        #paypal-button-container {
-          width: 250px;
-        }
-      }
-    </style>
+      {% comment %}@media screen and (min-width: 400px) {{% endcomment %}
+        {% comment %}#paypal-button-container {{% endcomment %}
+          {% comment %}width: 250px;{% endcomment %}
+        {% comment %}}{% endcomment %}
+      {% comment %}}{% endcomment %}
+    {% comment %}</style>{% endcomment %}
 
     <div>
       <span id="total" hidden>{{ base_ctx.order.get_total_discount }}</span>
@@ -35,12 +31,14 @@
           <span>details div</span> <br />
           order amt <span>{{ base_ctx.order.get_total_discount }}</span>
         </div>
-
         <div class="button">
           <div id="paypal-button-container"></div>
         </div>
       </div>
     </center>
+    <div style="margin-bottom: 50px">
+
+    </div>
 
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AepDl2edisUiK_2P8WMSCGBIksXZkSUtdVP8eZOFjOm92j5MP8ApMpKy9fo_RSsH5xp1431QzYUAdDuX&currency=USD"></script>

@@ -62,11 +62,13 @@ def checkout(request):
 
 #data getting and priting
 def get_data(request):  # {{{
-    return JsonResponse(datamakker.a)
+    a = datamakker.UserCount()
+    return JsonResponse(a)
 
 
 def get_cat_data(request):
-    return JsonResponse(datamakker.b)  # }}}
+    b= datamakker.ProfitCount()
+    return JsonResponse(b)  # }}}
 
 
 def profile(request):  #{{{

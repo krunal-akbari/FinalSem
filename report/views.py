@@ -8,26 +8,31 @@ import home.datamakker as dmk
 def csvrpt(request):
     response = HttpResponse(content_type='text/csv',headers={'Content-Disposition': 'attachment; filename="test.csv"'})
     writer = csv.writer(response)
-    for x in dmk.a:
-        writer.writerow([x,dmk.a[x]])
-
-
+    a = dmk.UserCount()
+    for x in a:
+        writer.writerow([x,a[x]])
     return response
 
 def jsonrpt(request):
     response = HttpResponse(content_type='application/json',headers={'Content-Disposition': 'attachment; filename="test.json"'})
-    response.write(dmk.a)
-    response.write(dmk.b)
+    a = dmk.UserCount()
+    b = dmk.ProfitCount()
+    response.write(a)
+    response.write(b)
     return response
 
 def excelrpt(request):
     response = HttpResponse(content_type='application/vnd.ms-excel',headers={'Content-Disposition': 'attachment; filename="test.xls"'})
-    response.write(dmk.a)
+    a = dmk.UserCount()
+    response.write(a)
     return response
 
 
 
 @user_passes_test(lambda u:u.is_superuser)
 def chart(request):
-    return render(request, 'chart.html')
+    a = dmk.UserCount()
+    b = dmk.ProfitCount()
+    ctx = {"a":a,"b":b}
+    return render(request, 'chart.html',ctx)
 
