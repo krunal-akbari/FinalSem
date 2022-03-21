@@ -25,9 +25,10 @@ class Product(models.Model):
     cat = models.CharField(max_length=200)
     subcat = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='img/product/')
-
+    description = models.TextField(max_length=1000, null=True,blank=True)
     offerd_price = models.FloatField(null=True, blank=True)
-
+    available = models.BooleanField(default=True)
+    stock = models.IntegerField(default=1)
     def __str__(self) -> str:
         return f"{self.tname} \t {self.pid}"
 
