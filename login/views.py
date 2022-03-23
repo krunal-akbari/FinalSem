@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate
 import random
@@ -52,14 +52,20 @@ def signin_ups(request):
                     c = Customer.objects.create(user=user)
                     c.save()
 
-                    messages.success(request, 'Account was created for ' + name)
+                    messages.success(request,
+                                     'Account was created for ' + name)
 
                     return redirect('login_otp')
+                else:
+                    pass
+
             if 'signin' in request.POST:
                 username = request.POST.get('uemail')
                 password = request.POST.get('upassword')
 
-                user = authenticate(request, username=username, password=password)
+                user = authenticate(request,
+                                    username=username,
+                                    password=password)
 
                 if user is not None:
                     login(request, user)
@@ -69,10 +75,12 @@ def signin_ups(request):
 
         context = {'form': form}
         return render(request, 'signin_up.html', context)
-    
+
+
 def user_logout(request):
     logout(request)
     return redirect('home')
+
 
 def change_password(request):
     username = request.user.username
@@ -81,7 +89,7 @@ def change_password(request):
         user.set_password('kishan')
         print('Change password')
 
-    else: 
+    else:
         print("user is not exist")
-    
+
     return HttpResponse(user)
