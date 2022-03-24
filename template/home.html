@@ -28,8 +28,6 @@
             {% for x in base_ctx.p %}
             <div class="col-lg-3 col-md-4 col-sm-6 mix {{ x.cat | title }} {{ x.subcat | title }}">
                 <div class="featured__item">
-                    <div>
-                    </div>
                     <div
                         class="featured__item__pic set-bg"
                         data-setbg="{{ x.image.url }}"
@@ -37,9 +35,6 @@
                         <ul class="featured__item__pic__hover">
                             <li>
                                 <a><i class="fa fa-heart update-fav" data-action="add" data-productid="{{ x.pid }}"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-retweet"></i></a>
                             </li>
                             <li>
                                 <a><i

@@ -124,7 +124,8 @@
                     dangerMode: true,
                 }).then((willDelete) => {
                     if(willDelete){
-                        swal("Your order has been canceled!", {
+                        swal(
+                        "Your order has been canceled!", {
                             icon: "success",
                         });
                         $.ajax({
@@ -137,6 +138,7 @@
                             },
                             success: function(response) {
                                 console.log(response);
+
                                 window.location.href = "{% url 'order_details' %}";
                             }
                         });

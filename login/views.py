@@ -57,7 +57,7 @@ def signin_ups(request):
 
                     return redirect('login_otp')
                 else:
-                    pass
+                    messages.error(request, 'the form is not valid')
 
             if 'signin' in request.POST:
                 username = request.POST.get('uemail')
