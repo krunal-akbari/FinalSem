@@ -17,5 +17,11 @@ urlpatterns = [
     path('payment',views.payment,name="payment"),
     path('complate',views.complate,name="sucess"),
     path('search',views.search,name="search"),
-
+    path('policy',views.policy,name="policy"),
+    path('delivery',views.delivery,name="delivery"),
+    path('toc',views.toc,name="toc"),
+    path('cokies',views.cokies,name="cokies"),
+    path('returnpol',views.returnpol,name="returnpol"),
+    path('desclaimer',views.desclaimer,name="desclaimer"),
+    path('elua',views.elua,name="elua"),
 ]

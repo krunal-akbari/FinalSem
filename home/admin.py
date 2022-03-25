@@ -31,3 +31,5 @@ admin.site.register(ShippingAddress)
 admin.site.register(Wishlist)
 admin.site.register(WishlistItem)
 admin.site.register(CancelOrder)
+admin.site.register(subscribe)
+

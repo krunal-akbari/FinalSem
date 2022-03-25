@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'order',
     'report',
     'paypal.standard.ipn',
-    'rest_framework'
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [

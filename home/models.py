@@ -181,3 +181,7 @@ class Complains(models.Model):
     date_completed = models.DateTimeField(auto_now_add=True)
     complain = models.CharField(max_length=200)
 
+class subscribe(models.Model):
+    email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

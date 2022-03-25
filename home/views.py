@@ -160,3 +160,19 @@ def search(request):
     # response = render_to_response('404.html',{},context_instance=RequestContext(request))
     # response.code = 404
     # return response
+
+def policy(request):
+    return render(request, 'policy.html')
+
+def delivery(request):
+    return render(request, 'delivery.html')
+def toc(request):
+    return render(request, 'toc.html')
+def cokies(request):
+    return render(request, 'cokies.html')
+def returnpol(request):
+    return render(request, 'returnpol.html')
+def desclaimer(request):
+    return render(request, 'desclaimer.html')
+def elua(request):
+    return render(request, 'eula.html')
