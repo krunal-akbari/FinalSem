@@ -41,7 +41,7 @@ django-allauth==0.39.1
 django-bootstrap-form==3.4
 django-countries==5.3.3
 django-crispy-forms==1.7.2
-django-debug-toolbar==1.10.1
+django-debug-toolbar==1.11.1
 django-decouple==2.1
 django-excel==0.0.10
 django-filter==21.1
