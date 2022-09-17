@@ -147,7 +147,7 @@ PyJWT==2.3.0
 pylint==2.12.2
 pynvim==0.4.3
 pyparsing==3.0.6
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pypng==0.0.21
 PyQRCode==1.2.1
 PyQt5==5.15.6
