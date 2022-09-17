@@ -207,7 +207,7 @@ typeguard==2.13.3
 typing-extensions==3.7.4.3
 tzdata==2021.5
 tzlocal==4.1
-ujson==5.1.0
+ujson==5.4.0
 unattended-upgrades==0.1
 urllib3==1.26.8
 validators==0.18.2
