@@ -1,0 +1,4 @@
+python3 -m venv env
+
+#!/bin/bash
+source ./env/bin/activate
