@@ -1,13 +1,13 @@
-FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python3 python3-pip
-RUN mkdir /app
-WORKDIR /app
-COPY . /app
+FROM continuumio/miniconda3 AS base
+
+RUN mkdir app
+WORKDIR app
+COPY requirements.txt requirements.txt
+RUN apt update -y && apt upgrade -y && apt install gcc -y && pip install django django-admin
+
+RUN pip install -r requirements.txt  
+
+FROM base AS installation
+COPY . .
 EXPOSE 8000
-RUN pip install --upgrade pip && pip install -r requirements.txt
-RUN python3 manage.py makemigrations && python3 manage.py migrate
-# RUN python3 manage.py collectstatic --noinput \
-#     --username=admin --email=krunalakbari233@gmial.com  --password=admin
-# RUN python manage.py shell --noinput < scrip.py
-CMD ["python3", "manage.py", "runserver","0.0.0.0:8000"]
+CMD [  "python", "./manage.py", "runserver", "0.0.0.0:8000" ]
